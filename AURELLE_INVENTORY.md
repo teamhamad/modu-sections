@@ -18,3 +18,7 @@ Code is structurally validated but must be tested in a Shopify preview theme bef
 | AURELLE — Brand Footer | aurelle-footer.liquid | Testing pending |
 
 Publish by setting price, checkoutUrl, previewImage, shopifyTested and published in data/collections/aurelle.json after the live Shopify product is connected. Buyer ZIPs remain in Digital Products storage.
+
+## Local QA update
+
+The review and release status are tracked in [AURELLE_QA.md](AURELLE_QA.md). The published catalog remains preview-only until live Shopify testing and file delivery are enabled.
