@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Full screen AURELLE section design preview"><meta name="theme-color" content="#f6f6f3"><title>Section preview — modu.</title><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"><link rel="stylesheet" href="./preview.css"></head>
+<body><div id="preview-app">
+<header class="preview-header">
+ <a class="brand" href="./index.html" aria-label="modu homepage">modu<span>.</span></a>
+ <div class="name-group"><strong id="section-name">AURELLE section</strong><small id="preview-caption">Design preview · Shopify testing pending</small></div>
+ <div class="controls" aria-label="Preview controls">
+  <div class="switch" role="group" aria-label="Device"><button id="desktop" type="button" class="active" aria-pressed="true">▣ <span>Desktop</span></button><button id="mobile" type="button" aria-pressed="false">▯ <span>Mobile</span></button></div>
+  <div class="switch" role="group" aria-label="Zoom"><button id="fit" type="button" class="active" aria-pressed="true">Fit</button><button id="actual" type="button" aria-pressed="false">100%</button></div>
+  <button id="fullscreen" type="button" class="fullscreen-button">⛶ <span>Full screen</span></button>
+  <a class="close" id="back" href="./aurelle.html" aria-label="Close preview and return to section details">✕</a>
+ </div>
+</header>
+<main class="viewport"><div class="stage" id="stage">
+ <div id="loading" class="message">Loading section preview…</div>
+ <div id="image-box" class="image-box" hidden><img id="design-image" alt="" draggable="false"></div>
+ <div id="mobile-missing" class="message" hidden><div class="phone-icon">▯</div><strong>Mobile preview coming soon</strong><p>A genuine Shopify mobile screenshot is not available yet. We won’t stretch a desktop picture and call it mobile.</p><button type="button" id="back-desktop">View desktop design</button></div>
+ <div id="error" class="message" hidden><strong>Section not found</strong><p>Return to the collection to choose another design.</p><a href="./aurelle.html">All AURELLE sections</a></div>
+</div></main>
+<footer class="preview-footer"><span id="collection-name">AURELLE COLLECTION</span><span>Design reference, not an interactive Shopify demo</span><a href="./aurelle.html">All sections ↗</a></footer>
+</div><script defer src="./preview.js"></script></body></html>
