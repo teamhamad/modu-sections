@@ -75,7 +75,7 @@ function cardMarkup(item) {
   const saved=state.saved.has(item.id);
   const tags=Array.isArray(item.tags)?item.tags:[];
   const ready=item.published===true && item.shopifyTested===true;
-  const badge=ready?"Available":"In development";
+  const badge=ready?"Available":"Liquid built";
   return '<article class="product-card shop-card">' +
     '<div class="card-media"><button class="card-preview-open" type="button" data-preview="'+escapeHtml(item.id)+'" aria-label="Preview '+escapeHtml(item.name)+'">' +
     '<img class="real-preview-image" src="'+assetUrl(item.thumbnail)+'" alt="Design preview of '+escapeHtml(item.name)+'" loading="lazy" decoding="async" />' +
