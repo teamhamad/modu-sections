@@ -1,124 +1,281 @@
-/* modu. sections marketplace — working, dependency-free front-end prototype.
- * Replace CATALOG with real Shopify section records and connect checkout/auth before launch.
- * No fake product installations or payment actions are presented as completed.
- */
-const CATALOG = [
- {id:'solace',name:'Solace — Split Hero',type:'Hero & banners',industry:['Skincare & beauty','Wellness'],style:'Minimal',price:29,new:true,desc:'A serene split-layout hero for brands that lead with a story.',layout:'split',obj:'bottle',brand:'selah.',line:'A softer kind of',em:'everyday.',subtitle:'Considered essentials for you.',eyebrow:'THE DAILY RITUAL',button:'Explore the ritual',bg:'#f3f2e9',panel:'#d6e2d3',ink:'#41584c',tags:['Skincare','Hero'],keywords:'skin care beauty cosmetics landing banner wellness product hero',order:1},
- {id:'muse',name:'Muse — Editorial Lookbook',type:'Collections',industry:['Fashion & apparel'],style:'Editorial',price:39,new:true,desc:'Magazine-inspired imagery for your next collection launch.',layout:'gallery',obj:'shirt',brand:'nord.',bg:'#e8e0d5',panel:'#c8bbaa',alt:'#d5c1af',ink:'#4d443c',tags:['Fashion','Editorial'],keywords:'clothes clothing outfits collection lookbook apparel shop',order:2},
- {id:'ritual',name:'Ritual — Product Spotlight',type:'Product sections',industry:['Skincare & beauty','Wellness'],style:'Minimal',price:29,new:false,desc:'Give your best-selling formula the space it deserves.',layout:'split',obj:'jar',brand:'form.',line:'A little',em:'luxury.',subtitle:'Your new favorite everyday.',eyebrow:'THE SIGNATURE EDIT',button:'Meet the formula',bg:'#f0e9e0',panel:'#dfd7c9',ink:'#6c594f',tags:['Skincare','Product'],keywords:'skin care beauty skincare product feature spotlight',order:3},
- {id:'form',name:'Form — Product Grid',type:'Product sections',industry:['Fashion & apparel','Jewelry & accessories'],style:'Modern',price:35,new:true,desc:'A product gallery with a refined, conversion-friendly rhythm.',layout:'grid',obj:'shirt',brand:'ECHO',line:'The new essentials',bg:'#f4f1ec',panel:'#e2dcd1',ink:'#4a4842',tags:['Fashion','Product'],keywords:'clothing product cards product grid shop all catalog featured',order:4},
- {id:'lume',name:'Lume — Before & After',type:'Interactive',industry:['Skincare & beauty','Wellness'],style:'Modern',price:29,new:true,desc:'An interactive transformation story that makes proof visual.',layout:'before',brand:'lumière',bg:'#ebddd2',ink:'#5d4840',tags:['Skincare','Interactive'],keywords:'before after compare slider skincare results skin care',order:5},
- {id:'terra',name:'Terra — Brand Story',type:'Content & story',industry:['Home & living','Wellness'],style:'Editorial',price:25,new:false,desc:'An immersive image-and-text section with an editorial soul.',layout:'split',obj:'chair',brand:'objects.',line:'Objects that',em:'stay.',subtitle:'For a slower kind of living.',eyebrow:'THOUGHTFUL BY DESIGN',button:'Our philosophy',bg:'#f1ece4',panel:'#d3c5b4',ink:'#6c5c4e',tags:['Home','Story'],keywords:'home decor furniture storytelling image text about',order:6},
- {id:'studio',name:'Studio — Campaign Hero',type:'Hero & banners',industry:['Fashion & apparel'],style:'Bold',price:35,new:false,desc:'Make an entrance with a fashion-first campaign design.',layout:'split',obj:'shirt',brand:'AURA',line:'Made to',em:'move.',subtitle:'A new perspective on style.',eyebrow:'COLLECTION 06',button:'Shop the drop',bg:'#e5ded8',panel:'#c8b5a6',ink:'#40352f',tags:['Fashion','Hero'],keywords:'hero banner campaign clothing editorial fashion video',order:7},
- {id:'arc',name:'Arc — Customer Stories',type:'Social proof',industry:['Skincare & beauty','Wellness','Home & living'],style:'Minimal',price:19,new:false,desc:'Thoughtful testimonials with room for authentic voices.',layout:'testimonials',brand:'the good edit.',bg:'#f2eee8',ink:'#655648',tags:['Reviews','Trust'],keywords:'customer testimonials social proof quotes reviews ratings',order:8},
- {id:'current',name:'Current — Logo Ticker',type:'Social proof',industry:['Electronics','Fashion & apparel','Wellness'],style:'Modern',price:0,new:false,desc:'A clean partner-logo strip for confident social proof.',layout:'marquee',brand:'CURRENT',bg:'#e8ebf0',ink:'#4c5865',tags:['Free','Logos'],keywords:'free scrolling logo bar marquee brand partners trust',order:9},
- {id:'meadow',name:'Meadow — Brand Benefits',type:'Content & story',industry:['Home & living','Pets','Skincare & beauty'],style:'Minimal',price:19,new:false,desc:'Highlight what sets your products apart, beautifully.',layout:'benefits',brand:'meadow',bg:'#eaf0e6',ink:'#53684e',tags:['Benefits','Features'],keywords:'features icons unique selling points benefits value propositions',order:10},
- {id:'onda',name:'Onda — Collection Carousel',type:'Collections',industry:['Food & drink','Wellness'],style:'Playful',price:29,new:true,desc:'A playful collection discovery experience for colorful brands.',layout:'carousel',obj:'can',brand:'soda pop.',line:'Find your flavour',bg:'#f4ece2',panel:'#e5d4bc',ink:'#9a695c',tags:['Food','Collection'],keywords:'food drink beverage products slider carousel featured collection',order:11},
- {id:'halo',name:'Halo — Floating Add to Cart',type:'Interactive',industry:['Electronics','Skincare & beauty'],style:'Modern',price:25,new:false,desc:'Keep the decision easy with a beautiful floating cart CTA.',layout:'cart',obj:'device',brand:'HALO',bg:'#e8e9e8',panel:'#d2d4d4',ink:'#42474b',tags:['Cart','Conversion'],keywords:'sticky floating add to cart ecommerce product purchase',order:12},
- {id:'gems',name:'Gems — Jewelry Gallery',type:'Collections',industry:['Jewelry & accessories'],style:'Editorial',price:35,new:true,desc:'A quiet-luxury carousel for pieces worth keeping.',layout:'stacked',obj:'ring',brand:'aure.',bg:'#f3eee4',panel:'#dbcdb8',alt:'#ead7c0',ink:'#76644c',tags:['Jewelry','Collection'],keywords:'jewelry rings accessories gold product gallery carousel',order:13},
- {id:'still',name:'Still — Product Rituals',type:'Product sections',industry:['Skincare & beauty','Home & living'],style:'Editorial',price:35,new:false,desc:'A calm, detail-rich product row for high-touch collections.',layout:'grid',obj:'bottle',brand:'STILL / CO',line:'Intentional essentials',bg:'#ecebe3',panel:'#d6d9cc',ink:'#4f6355',tags:['Beauty','Product'],keywords:'skin care product grid featured bestseller product cards',order:14},
- {id:'brio',name:'Brio — Everyday Essentials',type:'Product sections',industry:['Pets','Food & drink'],style:'Playful',price:25,new:false,desc:'A friendly product showcase for everyday favorites.',layout:'grid',obj:'pet',brand:'brio.',line:'Happy little things',bg:'#f3e9df',panel:'#e7d9c7',ink:'#986d57',tags:['Pets','Product'],keywords:'pets dogs animals pet food product grid essentials',order:15},
- {id:'aura',name:'Aura — New Arrival Hero',type:'Hero & banners',industry:['Jewelry & accessories','Fashion & apparel'],style:'Editorial',price:0,new:false,desc:'A timeless announcement hero, ready for a standout release.',layout:'split',obj:'ring',brand:'aura.',line:'Something',em:'timeless.',subtitle:'A little light, every day.',eyebrow:'NEW SEASON',button:'Discover the edit',bg:'#f0ebe3',panel:'#e0d4c5',ink:'#6b5e4a',tags:['Free','Hero'],keywords:'free fashion jewelry hero announcement product launch',order:16}
+/* modu. Shopify sections marketplace.
+   Only explicitly published REAL products in data/sections.json are displayed.
+   Paid Liquid source must NEVER be placed in this public static repository. */
+"use strict";
+
+const TYPES = ["Product sections","Hero & banners","Collections","Social proof","Interactive","Content & story"];
+const INDUSTRIES = [
+  ["Skincare & beauty","✳"],["Fashion & apparel","◈"],["Home & living","⌂"],
+  ["Jewelry & accessories","◇"],["Wellness","✺"],["Food & drink","◌"],
+  ["Electronics","▣"],["Pets","♡"]
 ];
-const TYPES=['Product sections','Hero & banners','Collections','Social proof','Interactive','Content & story'];
-const INDUSTRIES=[['Skincare & beauty','✳'],['Fashion & apparel','◈'],['Home & living','⌂'],['Jewelry & accessories','◇'],['Wellness','✺'],['Food & drink','◌'],['Electronics','▣'],['Pets','♡']];
-const STYLES=['Minimal','Editorial','Modern','Bold','Playful'];
-const PRICE_OPTIONS=[['free','Free'],['under25','$1 – $25'],['over25','$26 – $40']];
-const state={query:'',industries:new Set(),types:new Set(),styles:new Set(),prices:new Set(),sort:'featured',savedOnly:false,saved:new Set(),modalId:null,device:'desktop'};
-const $=selector=>document.querySelector(selector);const $$=selector=>Array.from(document.querySelectorAll(selector));
-const icon=name=>`<svg class="icon" aria-hidden="true"><use href="#i-${name}"/></svg>`;
-const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-try{state.saved=new Set(JSON.parse(localStorage.getItem('modu_saved')||'[]').filter(id=>CATALOG.some(p=>p.id===id)))}catch(e){state.saved=new Set()}
-const priceLabel=p=>p===0?'Free':`$${p}`;
-function renderScene(item){
- const obj=kind=>`<div class="obj-${kind||'bottle'}"></div>`;
- const top=`<div class="scene-topbar"><b>${escapeHtml(item.brand)}</b><span>SHOP &nbsp; &nbsp; ABOUT &nbsp; &nbsp; JOURNAL</span><span>☰</span></div>`;
- const products=(kind,number=3)=>`<div class="mini-products">${Array.from({length:number},(_,i)=>`<div class="mini-product" style="${i===1?'background:var(--scene-alt,#f0e6dd)':''}">${obj(i===1&&kind==='shirt'?'shoe':kind)}</div>`).join('')}</div>`;
- let layout='';
- switch(item.layout){
-  case 'split': layout=`<div class="scene-content scene-split"><div class="scene-copy"><span class="scene-small">${escapeHtml(item.eyebrow||'THE COLLECTION')}</span><h4>${escapeHtml(item.line)}<br/><i>${escapeHtml(item.em||'essentials.')}</i></h4><p>${escapeHtml(item.subtitle||'Thoughtful things for every day.')}</p><span class="scene-cta">${escapeHtml(item.button||'Shop the edit')} &nbsp; ↗</span></div><div class="scene-image">${obj(item.obj)}<span class="obj-leaf"></span></div></div>`;break;
-  case 'gallery': layout=`<div class="scene-content scene-gallery"><div class="scene-image">${obj('shirt')}</div><div class="scene-image">${obj('shirt')}</div><div class="overlay-title">The art of<br/>getting dressed.</div></div>`;break;
-  case 'grid': layout=`<div class="scene-content scene-grid"><h4 class="grid-label">${escapeHtml(item.line||'The everyday edit')}<small>CURATED WITH CARE</small></h4>${products(item.obj)}</div>`;break;
-  case 'before': layout=`<div class="scene-content scene-before"><div class="half"><div class="scene-face"></div></div><div class="half"><div class="scene-face"></div></div><div class="before-divider"></div><div class="before-knob">↔</div></div>`;break;
-  case 'testimonials': layout=`<div class="scene-content scene-testimonials"><h4>Words worth sharing.</h4><div class="quote-cards"><div class="quote-card"><span>★★★★★</span><p>“The little ritual I look forward to.”</p><small>— Customer quote placeholder</small></div><div class="quote-card"><span>★★★★★</span><p>“Everything feels intentional.”</p><small>— Customer quote placeholder</small></div></div></div>`;break;
-  case 'marquee':layout=`<div class="scene-content scene-marquee"><h4>In good company.</h4><div class="marquee-logos"><b>FORM.</b><b>ETHER</b><b>studio.</b><b>ONDA</b></div></div>`;break;
-  case 'benefits':layout=`<div class="scene-content scene-benefits"><h4>The things that matter.</h4><div class="benefit-cards"><div class="benefit-card"><i>✳</i><strong>Made with care</strong><small>Every detail counts</small></div><div class="benefit-card"><i>♧</i><strong>Thoughtful sourcing</strong><small>Intentional choices</small></div><div class="benefit-card"><i>♡</i><strong>Here for you</strong><small>Always with love</small></div></div></div>`;break;
-  case 'carousel':layout=`<div class="scene-content scene-carousel"><h4>Pick your happy.</h4>${products('can')}</div>`;break;
-  case 'cart':layout=`<div class="scene-content scene-cart"><div class="cart-product"><div class="cart-thumb">${obj('device')}</div><div><b>Everyday portable</b><small>Graphite · One size</small><em>$79.00</em><br/><span class="mini-add">Add to bag →</span></div></div></div>`;break;
-  case 'stacked':layout=`<div class="scene-content scene-stacked"><div class="scene-image">${obj('ring')}</div><div class="scene-image">${obj('ring')}</div><div class="scene-image">${obj('ring')}</div></div>`;break;
- }
- return `<div class="scene" style="--scene-bg:${item.bg};--scene-panel:${item.panel||'#dedcd3'};--scene-alt:${item.alt||'#f0e7de'};--scene-ink:${item.ink}">${top}${layout}</div>`;
+const STYLES = ["Minimal","Editorial","Modern","Bold","Playful"];
+let CATALOG = [];
+let catalogStatus = "loading";
+const state = {
+  query:"",industries:new Set(),types:new Set(),styles:new Set(),
+  sort:"featured",savedOnly:false,saved:new Set(),modalId:null,device:"desktop"
+};
+const $ = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const icon = name => '<svg class="icon" aria-hidden="true"><use href="#i-' + name + '"/></svg>';
+const escapeHtml = value => String(value == null ? "" : value).replace(/[&<>"']/g, char => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[char]));
+const normalize = value => String(value || "").toLowerCase().replace(/&/g," and ").replace(/[^a-z0-9 ]/g," ").replace(/\s+/g," ").trim();
+const assetUrl = value => {
+  if (typeof value !== "string" || !value.trim()) return "";
+  try {
+    const u = new URL(value, window.location.href);
+    return ["https:","http:"].includes(u.protocol) ? escapeHtml(u.href) : "";
+  } catch { return ""; }
+};
+const safeId = value => /^[a-z0-9][a-z0-9-]*$/i.test(String(value || ""));
+let lastFocused = null;
+
+function validItem(item) {
+  return item && item.published === true && safeId(item.id) &&
+    typeof item.name === "string" && item.name.trim() &&
+    TYPES.includes(item.type) && Array.isArray(item.industry) &&
+    item.industry.length > 0 && item.industry.every(v => INDUSTRIES.some(([name]) => name === v)) &&
+    STYLES.includes(item.style) && typeof item.thumbnail === "string" && Boolean(assetUrl(item.thumbnail));
 }
-function matchesPrice(item,v){return v==='free'?item.price===0:v==='under25'?item.price>=1&&item.price<=25:item.price>=26&&item.price<=40}
-function normalized(s){return String(s).toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim()}
-function matches(item,{ignore}={}){
- if(!ignore||ignore!=='query'){
-   const terms=normalized(state.query).split(' ').filter(t=>t&& !['section','sections','shopify','for','and','a','the'].includes(t));
-   const haystack=normalized([item.name,item.type,...item.industry,item.style,item.desc,item.keywords,...item.tags].join(' '));
-   if(terms.length&&!terms.every(t=>haystack.includes(t)))return false;
- }
- if(!ignore||ignore!=='industry')if(state.industries.size&&!item.industry.some(v=>state.industries.has(v)))return false;
- if(!ignore||ignore!=='type')if(state.types.size&&!state.types.has(item.type))return false;
- if(!ignore||ignore!=='style')if(state.styles.size&&!state.styles.has(item.style))return false;
- if(!ignore||ignore!=='price')if(state.prices.size&&![...state.prices].some(v=>matchesPrice(item,v)))return false;
- if(!ignore||ignore!=='saved')if(state.savedOnly&&!state.saved.has(item.id))return false;
- return true;
+function restoreSaved() {
+  try {
+    const ids = JSON.parse(localStorage.getItem("modu_saved") || "[]");
+    state.saved = new Set(Array.isArray(ids) ? ids.filter(id => CATALOG.some(item => item.id === id)) : []);
+  } catch { state.saved = new Set(); }
 }
-function sortedItems(items){let result=[...items];if(state.sort==='newest')result.sort((a,b)=>Number(b.new)-Number(a.new)||a.order-b.order);if(state.sort==='price-low')result.sort((a,b)=>a.price-b.price||a.order-b.order);if(state.sort==='price-high')result.sort((a,b)=>b.price-a.price||a.order-b.order);if(state.sort==='name')result.sort((a,b)=>a.name.localeCompare(b.name));return result}
-function cardMarkup(item){const saved=state.saved.has(item.id);return `<article class="product-card"><div class="card-media"><button class="card-preview-open" type="button" data-preview="${item.id}" aria-label="Preview ${escapeHtml(item.name)}">${renderScene(item)}<span class="card-hover-preview">${icon('monitor')} Preview section</span></button><span class="card-floating-tag">${item.new?'✳ Just added':item.price===0?'✦ Free to explore':'✦ Curated design'}</span><button class="card-save ${saved?'saved':''}" type="button" data-save="${item.id}" aria-label="${saved?'Remove from saved':'Save'} ${escapeHtml(item.name)}" aria-pressed="${saved}">${icon('heart')}</button></div><div class="card-info"><div class="card-caption"><span>${escapeHtml(item.type)}</span>${item.new?'<span class="card-new">NEW</span>':''}</div><div class="card-title-row"><button type="button" data-preview="${item.id}">${escapeHtml(item.name)}</button><span class="card-price ${item.price===0?'free':''}">${priceLabel(item.price)}</span></div><p class="card-description">${escapeHtml(item.desc)}</p><div class="card-tags">${item.tags.map(v=>`<span>${escapeHtml(v)}</span>`).join('')}</div></div></article>`}
-function filterCount(dim,val){return CATALOG.filter(item=>matches(item,{ignore:dim})&&(dim==='type'?item.type===val:dim==='industry'?item.industry.includes(val):dim==='style'?item.style===val:matchesPrice(item,val))).length}
-function makeCheckboxGroup(label,dim,values){const active=state[dim];return `<div class="filter-group"><div class="filter-heading">${escapeHtml(label)} ${icon('chevron')}</div><div class="filter-options">${values.map(([value,labelText])=>`<label class="filter-option"><input type="checkbox" data-dim="${dim}" value="${escapeHtml(value)}" ${active.has(value)?'checked':''}/><span>${escapeHtml(labelText)}</span><span class="option-count">${filterCount(dim==='industries'?'industry':dim==='types'?'type':dim==='styles'?'style':'price',value)}</span></label>`).join('')}</div></div>`}
-function renderFilters(){
- const industries=INDUSTRIES.map(([v])=>[v,v]);const types=TYPES.map(v=>[v,v]);const styles=STYLES.map(v=>[v,v]);
- $('#filter-groups').innerHTML=makeCheckboxGroup('Section type','types',types)+makeCheckboxGroup('Industry','industries',industries)+makeCheckboxGroup('Design style','styles',styles)+makeCheckboxGroup('Price range','prices',PRICE_OPTIONS);
- $('#industry-pills').innerHTML=`<button class="industry-pill ${state.industries.size===0?'selected':''}" data-industry-all="true">✦ &nbsp; All industries</button>`+INDUSTRIES.map(([v,symbol])=>`<button class="industry-pill ${state.industries.has(v)?'selected':''}" data-industry="${escapeHtml(v)}" aria-pressed="${state.industries.has(v)}"><span class="pill-emoji">${symbol}</span>${escapeHtml(v)}</button>`).join('');
- const count=state.industries.size+state.types.size+state.styles.size+state.prices.size+Number(state.savedOnly)+Number(!!state.query);
- $('#filter-num').textContent=count?`(${count})`:'';
+function saveShortlist() {
+  try { localStorage.setItem("modu_saved", JSON.stringify([...state.saved])); } catch {}
 }
-function renderChips(){let chips=[];if(state.query)chips.push(['query',state.query,`Search: ${state.query}`]);if(state.savedOnly)chips.push(['saved','1','Saved only']);for(const [dim,items] of [['industries',state.industries],['types',state.types],['styles',state.styles],['prices',state.prices]])for(const v of items)chips.push([dim,v,PRICE_OPTIONS.find(i=>i[0]===v)?.[1]||v]);const el=$('#active-filters');el.hidden=chips.length===0;el.innerHTML=chips.map(([dim,val,label])=>`<button type="button" class="active-filter" data-remove="${escapeHtml(dim)}" data-value="${escapeHtml(val)}">${escapeHtml(label)} ${icon('close')}</button>`).join('')+(chips.length?'<button type="button" class="active-clear" data-clear="true">Clear all</button>':'')}
-function renderCatalog(){const items=sortedItems(CATALOG.filter(item=>matches(item)));$('#product-grid').innerHTML=items.map(cardMarkup).join('');$('#result-count').textContent=items.length;$('#result-label').textContent=state.savedOnly?`saved section${items.length===1?'':'s'}`:`section${items.length===1?'':'s'} to explore`;$('#no-results').hidden=items.length!==0;$('#catalog-end').hidden=items.length===0;renderFilters();renderChips();$('#saved-count').textContent=state.saved.size;$('#saved-nav').setAttribute('aria-pressed',String(state.savedOnly));$('#saved-nav').style.color=state.savedOnly?'#5147d8':'';$('#hero-query').value=state.query;$('#clear-search').hidden=!state.query}
-function resetAll(){state.query='';state.industries.clear();state.types.clear();state.styles.clear();state.prices.clear();state.savedOnly=false;state.sort='featured';$('#sort-select').value='featured';renderCatalog()}
-function scrollToCatalog(){$('#catalog').scrollIntoView({behavior:'smooth',block:'start'})}
-function doSearch(query){state.query=query.trim();$('#search-suggestions').hidden=true;renderCatalog();scrollToCatalog()}
-function toggleSet(set,value){set.has(value)?set.delete(value):set.add(value);renderCatalog()}
-function persistSaved(){try{localStorage.setItem('modu_saved',JSON.stringify([...state.saved]))}catch(e){}}
-let toastTimer;function showToast(msg){const e=$('#toast');e.textContent=msg;e.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.classList.remove('show'),2700)}
-function toggleSaved(id){const item=CATALOG.find(p=>p.id===id);if(!item)return;state.saved.has(id)?state.saved.delete(id):state.saved.add(id);persistSaved();renderCatalog();if(state.modalId===id)renderModalDetails(item);showToast(state.saved.has(id)?'Saved to your shortlist':'Removed from your shortlist')}
-function renderModalDetails(item){const saved=state.saved.has(item.id);$('#modal-details').innerHTML=`<div class="modal-tags"><span>${escapeHtml(item.type)}</span>${item.industry.map(v=>`<span>${escapeHtml(v)}</span>`).join('')}</div><h2 id="modal-name">${escapeHtml(item.name)}</h2><p>${escapeHtml(item.desc)}</p><div class="modal-price">${priceLabel(item.price)} <span>concept catalog price · not for sale yet</span></div><div class="detail-divider"></div><div class="detail-list"><span>${icon('check-circle')} Designed for Shopify OS 2.0</span><span>${icon('check-circle')} Responsive design concept</span><span>${icon('check-circle')} Liquid implementation planned</span></div><button class="modal-action" data-modal-save="${item.id}">${icon('heart')} ${saved?'Remove from shortlist':'Save this section'}</button><button class="modal-action secondary" data-copy-brief="${item.id}">${icon('copy')} Copy design brief</button><p class="modal-notice">This is a visual storefront prototype. Shopify Liquid source, purchases, and real-theme compatibility testing are not yet included.</p>`}
-function renderModalScene(item){const target=$('#modal-scene-container');target.innerHTML=renderScene(item);target.classList.toggle('mobile-preview',state.device==='mobile');$('#device-desktop').classList.toggle('active',state.device==='desktop');$('#device-mobile').classList.toggle('active',state.device==='mobile')}
-let lastFocused;function openModal(id){const item=CATALOG.find(p=>p.id===id);if(!item)return;lastFocused=document.activeElement;state.modalId=id;state.device='desktop';renderModalScene(item);renderModalDetails(item);$('#modal-overlay').hidden=false;document.body.style.overflow='hidden';$('#modal-close').focus()}
-function closeModal(){state.modalId=null;$('#modal-overlay').hidden=true;document.body.style.overflow='';if(lastFocused&&lastFocused.isConnected)lastFocused.focus()}
-function openMobileFilters(){$('#sidebar').classList.add('drawer-open');$('#mobile-filter-backdrop').hidden=false;document.body.style.overflow='hidden'}
-function closeMobileFilters(){$('#sidebar').classList.remove('drawer-open');$('#mobile-filter-backdrop').hidden=true;document.body.style.overflow=''}
-function updateSuggestions(query){const el=$('#search-suggestions');const t=normalized(query);if(t.length<2){el.hidden=true;return}const matches=CATALOG.filter(p=>normalized([p.name,p.keywords,p.type,...p.industry].join(' ')).includes(t)).slice(0,5);if(!matches.length){el.hidden=true;return}el.innerHTML=`<div class="suggestion-head">MATCHING SECTIONS</div>`+matches.map(item=>`<button type="button" data-suggestion="${item.id}">${icon('search')} ${escapeHtml(item.name)} <span class="suggestion-type">${escapeHtml(item.type)}</span></button>`).join('');el.hidden=false}
-function copyText(t){if(navigator.clipboard&&window.isSecureContext){return navigator.clipboard.writeText(t)}const el=document.createElement('textarea');el.value=t;el.style.position='fixed';el.style.opacity='0';document.body.appendChild(el);el.select();try{document.execCommand('copy')}finally{el.remove()}return Promise.resolve()}
-// Event delegation ensures the controls still work after the catalog re-renders.
-document.addEventListener('click',e=>{
- const v=e.target.closest('[data-preview]');if(v){openModal(v.dataset.preview);return}
- const s=e.target.closest('[data-save]');if(s){toggleSaved(s.dataset.save);return}
- const p=e.target.closest('[data-industry]');if(p){toggleSet(state.industries,p.dataset.industry);return}
- if(e.target.closest('[data-industry-all]')){state.industries.clear();renderCatalog();return}
- const cat=e.target.closest('[data-type]');if(cat){toggleSet(state.types,cat.dataset.type);scrollToCatalog();return}
- const search=e.target.closest('[data-search]');if(search){doSearch(search.dataset.search);return}
- const suggestion=e.target.closest('[data-suggestion]');if(suggestion){const item=CATALOG.find(p=>p.id===suggestion.dataset.suggestion);if(item)doSearch(item.name.split(' — ')[0]);return}
- const remove=e.target.closest('[data-remove]');if(remove){const dim=remove.dataset.remove,val=remove.dataset.value;if(dim==='query')state.query='';else if(dim==='saved')state.savedOnly=false;else state[dim].delete(val);renderCatalog();return}
- if(e.target.closest('[data-clear]')){resetAll();return}
- const ms=e.target.closest('[data-modal-save]');if(ms){toggleSaved(ms.dataset.modalSave);return}
- const cp=e.target.closest('[data-copy-brief]');if(cp){const item=CATALOG.find(p=>p.id===cp.dataset.copyBrief);if(item)copyText(`${item.name}\nSection: ${item.type}\nIndustries: ${item.industry.join(', ')}\nStyle: ${item.style}\nConcept price: ${priceLabel(item.price)}\n${item.desc}`).then(()=>showToast('Design brief copied')).catch(()=>showToast('Copy is not available in this browser'));return}
- if(e.target===$('#modal-overlay'))closeModal();
- if(!e.target.closest('#hero-form'))$('#search-suggestions').hidden=true;
+function matches(item) {
+  const terms = normalize(state.query).split(" ").filter(t => t && !["section","sections","shopify","for","and","the"].includes(t));
+  const corpus = normalize([item.name,item.type,item.style,item.desc || "",item.keywords || "",
+    ...(item.industry || []),...(item.tags || [])].join(" "));
+  if (terms.some(term => !corpus.includes(term))) return false;
+  if (state.industries.size && !item.industry.some(value => state.industries.has(value))) return false;
+  if (state.types.size && !state.types.has(item.type)) return false;
+  if (state.styles.size && !state.styles.has(item.style)) return false;
+  if (state.savedOnly && !state.saved.has(item.id)) return false;
+  return true;
+}
+function sortedItems(items) {
+  const rows = [...items];
+  if (state.sort === "newest") rows.sort((a,b) => (Number(Boolean(b.new))-Number(Boolean(a.new))) || (Number(a.order||0)-Number(b.order||0)));
+  else if (state.sort === "name") rows.sort((a,b) => a.name.localeCompare(b.name));
+  else rows.sort((a,b) => Number(a.order||0)-Number(b.order||0));
+  return rows;
+}
+function screenshot(item, device) {
+  return assetUrl(device === "mobile" ? item.previewMobile || item.previewDesktop || item.thumbnail
+    : item.previewDesktop || item.thumbnail);
+}
+function cardMarkup(item) {
+  const saved = state.saved.has(item.id);
+  const tags = Array.isArray(item.tags) ? item.tags : [];
+  return '<article class="product-card">' +
+    '<div class="card-media"><button class="card-preview-open" type="button" data-preview="' + escapeHtml(item.id) + '" aria-label="Preview ' + escapeHtml(item.name) + '">' +
+    '<img class="real-preview-image" src="' + assetUrl(item.thumbnail) + '" alt="" loading="lazy" />' +
+    '<span class="card-hover-preview">' + icon("monitor") + ' View preview</span></button>' +
+    (item.new ? '<span class="card-floating-tag">✳ Just added</span>' : "") +
+    '<button class="card-save' + (saved ? ' saved' : '') + '" type="button" data-save="' + escapeHtml(item.id) + '" aria-label="' + (saved ? "Remove saved " : "Save ") + escapeHtml(item.name) + '" aria-pressed="' + saved + '">' + icon("heart") + '</button></div>' +
+    '<div class="card-info"><div class="card-caption"><span>' + escapeHtml(item.type) + '</span>' + (item.new ? '<span class="card-new">NEW</span>' : '') + '</div>' +
+    '<div class="card-title-row"><button data-preview="' + escapeHtml(item.id) + '" type="button">' + escapeHtml(item.name) + '</button></div>' +
+    '<p class="card-description">' + escapeHtml(item.desc || "") + '</p>' +
+    '<div class="card-tags">' + tags.map(tag => '<span>' + escapeHtml(tag) + '</span>').join("") + '</div></div></article>';
+}
+function options(label, dimension, values) {
+  const selected = state[dimension];
+  return '<div class="filter-group"><div class="filter-heading">' + escapeHtml(label) + ' ' + icon("chevron") + '</div><div class="filter-options">' +
+    values.map(([value,display]) => {
+      const count = CATALOG.filter(item => dimension === "types" ? item.type === value : dimension === "styles" ? item.style === value : item.industry.includes(value)).length;
+      return '<label class="filter-option"><input data-dim="' + dimension + '" type="checkbox" value="' + escapeHtml(value) + '"' +
+        (selected.has(value) ? " checked" : "") + '/><span>' + escapeHtml(display) + '</span>' +
+        (CATALOG.length ? '<span class="option-count">' + count + '</span>' : "") + '</label>';
+    }).join("") + '</div></div>';
+}
+function renderFilters() {
+  $("#filter-groups").innerHTML = options("Section type","types",TYPES.map(v => [v,v])) +
+    options("Industry","industries",INDUSTRIES.map(([v]) => [v,v])) +
+    options("Design style","styles",STYLES.map(v => [v,v]));
+  $("#industry-pills").innerHTML = '<button class="industry-pill' + (state.industries.size ? "" : " selected") + '" type="button" data-industry-all="true" aria-pressed="' + !state.industries.size + '">✦ &nbsp; All industries</button>' +
+    INDUSTRIES.map(([v,symbol]) => '<button type="button" class="industry-pill' + (state.industries.has(v) ? " selected" : "") +
+      '" data-industry="' + escapeHtml(v) + '" aria-pressed="' + state.industries.has(v) + '"><span class="pill-emoji">' + symbol + '</span>' + escapeHtml(v) + '</button>').join("");
+  const count = state.industries.size + state.types.size + state.styles.size + Number(state.savedOnly) + Number(Boolean(state.query));
+  $("#filter-num").textContent = count ? "(" + count + ")" : "";
+}
+function renderChips() {
+  const chips = [];
+  if (state.query) chips.push(["query",state.query,"Search: " + state.query]);
+  if (state.savedOnly) chips.push(["saved","1","Saved only"]);
+  for (const dim of ["industries","types","styles"])
+    for (const value of state[dim]) chips.push([dim,value,value]);
+  const target = $("#active-filters");
+  target.hidden = chips.length === 0;
+  target.innerHTML = chips.map(([dim,value,label]) =>
+    '<button class="active-filter" type="button" data-remove="' + escapeHtml(dim) + '" data-value="' + escapeHtml(value) +
+    '">' + escapeHtml(label) + ' ' + icon("close") + '</button>').join("") +
+    (chips.length ? '<button class="active-clear" type="button" data-clear="true">Clear all</button>' : "");
+}
+function renderEmpty(count) {
+  const empty = $("#no-results");
+  const noCatalog = CATALOG.length === 0;
+  const failure = catalogStatus === "error";
+  empty.hidden = count !== 0;
+  empty.classList.toggle("is-launch-state", noCatalog);
+  $("#empty-title").textContent = failure ? "The library couldn't load." :
+    noCatalog ? "Something thoughtfully built is coming." : "No matching sections yet.";
+  $("#empty-description").textContent = failure ? "We couldn't load the section library. Please refresh the page to try again." :
+    noCatalog ? "We're building our first collection of original Shopify Liquid sections. When a section is designed, coded and tested, you'll find its real preview here." :
+    "Try another keyword, industry or style to find a section that fits your store.";
+  $("#empty-details").hidden = failure || !noCatalog;
+  $("#no-result-reset").hidden = noCatalog || failure;
+  $(".empty-eyebrow").hidden = !noCatalog || failure;
+  $(".empty-monogram").hidden = !noCatalog || failure;
+}
+function renderCatalog() {
+  const items = sortedItems(CATALOG.filter(matches));
+  $("#product-grid").innerHTML = items.map(cardMarkup).join("");
+  $("#result-count").textContent = items.length;
+  $("#result-label").textContent = state.savedOnly ? "saved section" + (items.length===1?"":"s") :
+    "published section" + (items.length===1?"":"s");
+  $("#catalog-end").hidden = !items.length;
+  $("#saved-count").textContent = state.saved.size;
+  $("#saved-nav").setAttribute("aria-pressed", String(state.savedOnly));
+  $("#saved-nav").classList.toggle("is-active", state.savedOnly);
+  $("#clear-search").hidden = !state.query;
+  $("#hero-query").value = state.query;
+  $("#sort-select").disabled = !CATALOG.length;
+  renderEmpty(items.length);
+  renderFilters();
+  renderChips();
+}
+function resetAll() {
+  state.query = "";state.industries.clear();state.types.clear();state.styles.clear();state.savedOnly=false;
+  state.sort="featured";$("#sort-select").value="featured";renderCatalog();
+}
+function scrollToCatalog() { $("#catalog").scrollIntoView({behavior:"smooth",block:"start"}); }
+function doSearch(value) {
+  state.query = value.trim();$("#search-suggestions").hidden = true;renderCatalog();scrollToCatalog();
+}
+function toggleSet(set,value) {set.has(value) ? set.delete(value) : set.add(value);renderCatalog();}
+let toastTimer;
+function showToast(message) {
+  const el=$("#toast");el.textContent=message;el.classList.add("show");
+  clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove("show"),2700);
+}
+function toggleSaved(id) {
+  if (!CATALOG.some(item => item.id===id)) return;
+  state.saved.has(id) ? state.saved.delete(id) : state.saved.add(id);
+  saveShortlist();renderCatalog();
+  if (state.modalId===id) renderModalDetails(CATALOG.find(item=>item.id===id));
+  showToast(state.saved.has(id)?"Saved to your shortlist":"Removed from your shortlist");
+}
+function renderModalDetails(item) {
+  const tags = [item.type,...item.industry];
+  $("#modal-details").innerHTML =
+    '<div class="modal-tags">' + tags.map(tag=>'<span>'+escapeHtml(tag)+'</span>').join("")+'</div>' +
+    '<h2 id="modal-name">'+escapeHtml(item.name)+'</h2><p>'+escapeHtml(item.desc||"")+'</p>' +
+    '<div class="detail-divider"></div>' +
+    '<div class="detail-list"><span>'+icon("check-circle")+' Shopify Liquid section</span><span>'+icon("check-circle")+' Real design preview</span></div>' +
+    (assetUrl(item.demoUrl) ? '<a class="modal-action modal-link" target="_blank" rel="noopener noreferrer" href="'+assetUrl(item.demoUrl)+'">Open live demo '+icon("northeast")+'</a>' : '') +
+    '<button class="modal-action secondary" type="button" data-modal-save="'+escapeHtml(item.id)+'">'+icon("heart")+
+      (state.saved.has(item.id)?" Remove from saved":" Save section")+'</button>' +
+    '<p class="modal-notice">Each release is reviewed individually. Installation details and purchasing options will be published alongside the finished section.</p>';
+}
+function renderModalScene(item) {
+  const image=screenshot(item,state.device);
+  const scene=$("#modal-scene-container");
+  scene.innerHTML='<div class="scene real-scene"><img src="'+image+'" alt="'+escapeHtml(item.name)+' — '+state.device+' preview"/></div>';
+  scene.classList.toggle("mobile-preview",state.device==="mobile");
+  $("#device-desktop").classList.toggle("active",state.device==="desktop");
+  $("#device-mobile").classList.toggle("active",state.device==="mobile");
+}
+function openModal(id) {
+  const item=CATALOG.find(product=>product.id===id);if(!item)return;
+  lastFocused=document.activeElement;state.modalId=id;state.device="desktop";
+  renderModalScene(item);renderModalDetails(item);$("#modal-overlay").hidden=false;
+  document.body.style.overflow="hidden";$("#modal-close").focus();
+}
+function closeModal() {
+  state.modalId=null;$("#modal-overlay").hidden=true;document.body.style.overflow="";
+  if(lastFocused && lastFocused.isConnected)lastFocused.focus();
+}
+function openMobileFilters() {
+  $("#sidebar").classList.add("drawer-open");$("#mobile-filter-backdrop").hidden=false;document.body.style.overflow="hidden";
+}
+function closeMobileFilters() {
+  $("#sidebar").classList.remove("drawer-open");$("#mobile-filter-backdrop").hidden=true;document.body.style.overflow="";
+}
+function updateSuggestions(query) {
+  const el=$("#search-suggestions");const normalized=normalize(query);
+  if(normalized.length<2){el.hidden=true;return;}
+  const found=CATALOG.filter(item=>normalize([item.name,item.type,item.keywords||"",...item.industry].join(" ")).includes(normalized)).slice(0,5);
+  el.hidden=!found.length;
+  el.innerHTML=found.length ? '<div class="suggestion-head">MATCHING SECTIONS</div>'+found.map(item=>
+    '<button type="button" data-suggestion="'+escapeHtml(item.id)+'">'+icon("search")+' '+escapeHtml(item.name)+'</button>').join("") : "";
+}
+
+document.addEventListener("click",event=>{
+  const target=event.target;
+  let found=target.closest("[data-preview]");if(found){openModal(found.dataset.preview);return;}
+  found=target.closest("[data-save]");if(found){toggleSaved(found.dataset.save);return;}
+  found=target.closest("[data-industry]");if(found){toggleSet(state.industries,found.dataset.industry);return;}
+  if(target.closest("[data-industry-all]")){state.industries.clear();renderCatalog();return;}
+  found=target.closest("[data-type]");if(found){toggleSet(state.types,found.dataset.type);scrollToCatalog();return;}
+  found=target.closest("[data-search]");if(found){doSearch(found.dataset.search);return;}
+  found=target.closest("[data-suggestion]");if(found){const item=CATALOG.find(p=>p.id===found.dataset.suggestion);if(item)doSearch(item.name);return;}
+  found=target.closest("[data-remove]");if(found){
+    const dim=found.dataset.remove,val=found.dataset.value;
+    if(dim==="query")state.query="";else if(dim==="saved")state.savedOnly=false;else state[dim].delete(val);
+    renderCatalog();return;
+  }
+  if(target.closest("[data-clear]")){resetAll();return;}
+  found=target.closest("[data-modal-save]");if(found){toggleSaved(found.dataset.modalSave);return;}
+  if(target===$("#modal-overlay"))closeModal();
+  if(!target.closest("#hero-form"))$("#search-suggestions").hidden=true;
 });
-$('#hero-form').addEventListener('submit',e=>{e.preventDefault();doSearch($('#hero-query').value)});
-$('#hero-query').addEventListener('input',e=>{const q=e.target.value;$('#clear-search').hidden=!q;updateSuggestions(q)});
-$('#hero-query').addEventListener('keydown',e=>{if(e.key==='Escape')$('#search-suggestions').hidden=true});
-$('#clear-search').addEventListener('click',()=>{$('#hero-query').value='';state.query='';$('#search-suggestions').hidden=true;renderCatalog();$('#hero-query').focus()});
-$('#filter-groups').addEventListener('change',e=>{const t=e.target;if(!t.matches('input[data-dim]'))return;toggleSet(state[t.dataset.dim],t.value)});
-$('#reset-side').addEventListener('click',resetAll);$('#no-result-reset').addEventListener('click',resetAll);
-$('#sort-select').addEventListener('change',e=>{state.sort=e.target.value;renderCatalog()});
-$('#saved-nav').addEventListener('click',()=>{state.savedOnly=!state.savedOnly;renderCatalog();scrollToCatalog();if(state.savedOnly&&state.saved.size===0)showToast('Save a design with the heart icon to see it here')});
-$('#modal-close').addEventListener('click',closeModal);$('#device-desktop').addEventListener('click',()=>{state.device='desktop';renderModalScene(CATALOG.find(p=>p.id===state.modalId))});$('#device-mobile').addEventListener('click',()=>{state.device='mobile';renderModalScene(CATALOG.find(p=>p.id===state.modalId))});
-$('#mobile-filter-trigger').addEventListener('click',openMobileFilters);$('#mobile-apply').addEventListener('click',closeMobileFilters);$('#mobile-filter-backdrop').addEventListener('click',closeMobileFilters);
-$('#mobile-menu').addEventListener('click',()=>{const nav=$('#primary-nav');const next=!nav.classList.contains('open');nav.classList.toggle('open',next);$('#mobile-menu').setAttribute('aria-expanded',String(next))});
-$$('.primary-nav a').forEach(a=>a.addEventListener('click',()=>{$('#primary-nav').classList.remove('open');$('#mobile-menu').setAttribute('aria-expanded','false')}));
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(state.modalId)closeModal();if($('#sidebar').classList.contains('drawer-open'))closeMobileFilters()}});
+$("#hero-form").addEventListener("submit",event=>{event.preventDefault();doSearch($("#hero-query").value);});
+$("#hero-query").addEventListener("input",event=>{$("#clear-search").hidden=!event.target.value;updateSuggestions(event.target.value);});
+$("#hero-query").addEventListener("keydown",event=>{if(event.key==="Escape")$("#search-suggestions").hidden=true;});
+$("#clear-search").addEventListener("click",()=>{state.query="";$("#search-suggestions").hidden=true;renderCatalog();$("#hero-query").focus();});
+$("#filter-groups").addEventListener("change",event=>{const el=event.target;if(el.matches("input[data-dim]"))toggleSet(state[el.dataset.dim],el.value);});
+$("#reset-side").addEventListener("click",resetAll);
+$("#no-result-reset").addEventListener("click",resetAll);
+$("#sort-select").addEventListener("change",event=>{state.sort=event.target.value;renderCatalog();});
+$("#saved-nav").addEventListener("click",()=>{state.savedOnly=!state.savedOnly;renderCatalog();scrollToCatalog();});
+$("#modal-close").addEventListener("click",closeModal);
+$("#device-desktop").addEventListener("click",()=>{const item=CATALOG.find(p=>p.id===state.modalId);if(item){state.device="desktop";renderModalScene(item);}});
+$("#device-mobile").addEventListener("click",()=>{const item=CATALOG.find(p=>p.id===state.modalId);if(item){state.device="mobile";renderModalScene(item);}});
+$("#mobile-filter-trigger").addEventListener("click",openMobileFilters);
+$("#mobile-apply").addEventListener("click",closeMobileFilters);
+$("#mobile-filter-backdrop").addEventListener("click",closeMobileFilters);
+$("#mobile-menu").addEventListener("click",()=>{
+  const nav=$("#primary-nav"),open=!nav.classList.contains("open");
+  nav.classList.toggle("open",open);$("#mobile-menu").setAttribute("aria-expanded",String(open));
+});
+$$(".primary-nav a").forEach(a=>a.addEventListener("click",()=>{
+  $("#primary-nav").classList.remove("open");$("#mobile-menu").setAttribute("aria-expanded","false");
+}));
+document.addEventListener("keydown",event=>{
+  if(event.key==="Escape"){
+    if(state.modalId)closeModal();
+    if($("#sidebar").classList.contains("drawer-open"))closeMobileFilters();
+  }
+});
 renderCatalog();
+(async function loadCatalog() {
+  try {
+    const response = await fetch("./data/sections.json",{cache:"no-store"});
+    if(!response.ok)throw Error("Catalog request failed");
+    const records = await response.json();
+    if(!Array.isArray(records))throw Error("Catalog must be an array");
+    CATALOG = records.filter(validItem);
+    catalogStatus="ready";
+  } catch(error) {
+    CATALOG = [];catalogStatus="error";
+    console.warn("Shopify section catalog could not be loaded:",error);
+  }
+  restoreSaved();renderCatalog();
+})();

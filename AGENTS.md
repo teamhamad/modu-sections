@@ -7,3 +7,10 @@
 - Current catalog and prices are sample/demo data; do not represent checkout, downloads or Shopify Liquid products as live.
 - Deploy via GitHub Pages on main. When Pages is not enabled, ask the repo owner to enable Settings → Pages → GitHub Actions.
 - Before changing an existing design, review user requirements and provide screenshots/previews if available.
+
+
+## Product integrity
+- Never restore placeholder/sample catalog entries or invented prices, brands, testimonials, install claims, or screenshot previews.
+- Public entries belong in `data/sections.json` with `published: true` only after the real section exists and has been tested.
+- The hero MUST remain centered, text-only and without any imagery.
+- Keep paid downloadable Liquid source out of this public repository; use authenticated delivery infrastructure.

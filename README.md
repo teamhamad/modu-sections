@@ -1,37 +1,33 @@
-# modu. — Shopify Sections Marketplace
+# modu. Shopify Sections Marketplace
 
-A minimal, search-first storefront for selling standalone Shopify Liquid sections.
+An independent storefront for **original Shopify Liquid sections** — not complete themes. Clean Plus Jakarta Sans design, centered text-only search hero, curated categories and faceted discovery.
 
-## Preview and development
+## Current state
 
-This is a **frontend prototype**, not a fully operational e-commerce business. Sample product listings are concept demonstrations; checkout, accounts, real downloadable Liquid sections and licensing infrastructure are not yet implemented.
+The site intentionally displays an empty catalog until real Liquid sections are completed. No demo listings, fake reviews or invented prices are published. Search, filters and saved-section capabilities remain wired to an extensible catalog.
 
-The design uses Plus Jakarta Sans, a centered text-only hero search, category/industry/style filters, responsive catalog cards and section preview interactions.
+Source of truth for public listings: `data/sections.json` (currently `[]`). See [CATALOG_GUIDE.md](CATALOG_GUIDE.md) for the exact release checklist and JSON record schema.
 
-## Development
+## Run locally
 
-Open `index.html` in a browser, or serve this folder with `python3 -m http.server 8000`.
+Host with a local HTTP server so the browser can fetch the catalog:
 
-Source files:
-- `index.html` — layout and semantic markup
-- `styles.css` — base design system
-- `refined.css` — latest refined layout
-- `app.js` — section catalog and interaction logic
-- `.github/workflows/deploy.yml` — GitHub Pages deployment on each push to `main`
+```bash
+python3 -m http.server 8000
+```
+Then open http://localhost:8000. Directly opening `index.html` from disk is not sufficient because browsers block `fetch()` for local file URLs.
 
-## Hosting
+## Deployment
 
-Repository: https://github.com/teamhamad/modu-sections
+Pushing to the `main` branch triggers GitHub Pages deployment using `.github/workflows/deploy.yml`.
 
-To enable hosting, open **Settings → Pages → Build and deployment → Source: GitHub Actions**. Once enabled, pushes to `main` trigger the deployment workflow. Expected URL: https://teamhamad.github.io/modu-sections/ (verify deployment before sharing as live).
+Repo: https://github.com/teamhamad/modu-sections
+Public website: https://teamhamad.github.io/modu-sections/
 
-## Design constraints
+## Design rules
 
-Keep the hero centered, spacious and **completely free of images or illustrations**. Preserve Plus Jakarta Sans and the calm editorial visual design. Product cards may include visual previews. Search and all filters must remain functional.
-
-## Next steps
-
-1. Import real Shopify Liquid sections with working install instructions.
-2. Replace sample cards with authenticated section catalog entries.
-3. Build dedicated product-detail and live demo pages.
-4. Add customer access, secure delivery, checkout, licensing and support.
+- Keep the hero text-only (no image or illustration) with its centered search field.
+- Keep Plus Jakarta Sans and restrained, airy visual styling.
+- Separate section-type and merchant-industry filters.
+- Show only real screenshots/previews from completed Liquid sections.
+- Never commit secret keys, paid downloadable Liquid bundles, or private Figma assets without permission.
