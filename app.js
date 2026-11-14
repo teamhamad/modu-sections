@@ -86,7 +86,7 @@ function cardMarkup(item) {
     '<div class="card-title-row"><button data-preview="'+escapeHtml(item.id)+'" type="button">'+escapeHtml(item.name)+'</button></div>' +
     '<p class="card-description">'+escapeHtml(item.desc||"")+'</p>' +
     '<div class="card-tags">'+tags.map(tag=>'<span>'+escapeHtml(tag)+'</span>').join("")+'</div>' +
-    '<div class="shop-card-footer"><a href="'+escapeHtml(item.detailUrl)+'" aria-label="View details for '+escapeHtml(item.name)+'">View section details '+icon("northeast")+'</a><span>'+ (ready?"Ready to buy":"Design preview")+'</span></div>' +
+    '<div class="shop-card-footer"><a class="full-card-preview" href="./preview.html?section='+encodeURIComponent(item.id)+'" target="_blank" rel="noopener noreferrer">⛶ Full preview</a><a href="'+escapeHtml(item.detailUrl)+'" aria-label="View details for '+escapeHtml(item.name)+'">Details '+icon("northeast")+'</a></div>' +
     '</div></article>';
 }
 function options(label, dimension, values) {
@@ -184,6 +184,7 @@ function renderModalDetails(item) {
    '<h2 id="modal-name">'+escapeHtml(item.name)+'</h2><p>'+escapeHtml(item.desc||"")+'</p>'+
    '<div class="detail-divider"></div>'+
    '<div class="detail-list"><span>'+icon("check-circle")+' Standalone Shopify Liquid build</span><span>'+icon("check-circle")+' Theme editor settings included</span></div>'+
+   '<a class="modal-action modal-link" href="./preview.html?section='+encodeURIComponent(item.id)+'" target="_blank" rel="noopener noreferrer">⛶ Full-screen preview '+icon("northeast")+'</a>'+ 
    '<a class="modal-action modal-link" href="'+escapeHtml(item.detailUrl)+'">View section details '+icon("northeast")+'</a>'+
    '<button class="modal-action secondary" type="button" data-modal-save="'+escapeHtml(item.id)+'">'+icon("heart")+
    (state.saved.has(item.id)?" Remove from saved":" Save section")+'</button>'+
@@ -191,6 +192,7 @@ function renderModalDetails(item) {
 }
 function renderModalScene(item) {
   const scene=$("#modal-scene-container");
+  const full=$("#modal-full-preview");if(full)full.href="./preview.html?section="+encodeURIComponent(item.id);
   const mobile=state.device==="mobile";
   if (mobile && !item.previewMobile) {
     scene.innerHTML='<div class="scene modal-mobile-pending"><strong>Mobile preview coming after testing</strong><p>The design has not been verified in a live Shopify mobile theme yet.</p></div>';

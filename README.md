@@ -41,3 +41,7 @@ AURELLE product detail pages live at section.html?section=PRODUCT_ID. Liquid ZIP
 The homepage now lists 10 AURELLE Liquid builds as **in-development section previews** (no invented prices or purchasable buttons). Design preview screenshots are supplied by the user's AURELLE file and explicitly labeled as design previews, not proof of live Shopify rendering. Each card opens a section detail page, and search/type/industry filters work against `data/sections.json`.
 
 When a section passes Shopify testing, replace its design screenshot with an actual Shopify screenshot, attach its protected ZIP to a commercial Shopify Digital Product, and enable its purchase link/price. Do not copy paid ZIP contents into this public repository.
+
+## Full-screen preview
+
+All AURELLE sections now link to `preview.html?section=SECTION_ID`, a viewport-filling viewer with fit and 100% zoom, a browser fullscreen toggle, and desktop/mobile status. The brand is the simple typography-only `modu.` wordmark. Design references are not live tested Shopify demos.

@@ -255,3 +255,11 @@ footer{background:#fbfbfa;border-top:1px solid #eef0ed}
 .modal-mobile-pending{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:30px;min-height:310px;text-align:center;background:#f6f4ef;color:#343a35}
 .modal-mobile-pending strong{font-size:17px}.modal-mobile-pending p{font-size:12px;color:#7a817b;max-width:240px;line-height:1.7}
 @media(max-width:700px){.shop-card-footer{align-items:flex-start;flex-wrap:wrap}}
+
+.site-header .brand,.footer-brand .brand{gap:0;font-weight:800;letter-spacing:-.085em;font-size:28px;text-decoration:none}
+.modal-preview-toolbar{flex-wrap:wrap;gap:9px}
+.modal-fullscreen{margin-left:auto;display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;text-decoration:none;color:#4237a2;padding:11px 13px;border:1px solid #e2dff2;border-radius:8px;background:white}
+.modal-fullscreen:hover{background:#f6f4ff;border-color:#9c93df}
+.shop-card-footer{flex-wrap:wrap;gap:12px}
+.shop-card-footer .full-card-preview{color:#2e3155;font-weight:800}
+@media(max-width:650px){.modal-fullscreen{padding:9px 8px;font-size:10px}.site-header .brand{font-size:26px}}

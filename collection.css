@@ -3,3 +3,4 @@
 .card-cover img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top}
 .card .category{margin-top:20px}
 @media(max-width:600px){.card-cover{height:170px}}
+.card-bottom{gap:10px;flex-wrap:wrap}.card-bottom a:first-child{color:#4436ac;font-weight:800}
