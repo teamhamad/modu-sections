@@ -20,11 +20,13 @@
     "detailUrl": "./section.html?section=aurelle-hero",
     "order": 1,
     "new": false,
-    "status": "In development",
+    "status": "Liquid built · Sale pending",
     "catalogVisible": true,
     "published": false,
     "previewKind": "design",
-    "collection": "AURELLE"
+    "collection": "AURELLE",
+    "offlineReviewed": true,
+    "shopifyTested": false
   },
   {
     "id": "aurelle-category-gallery",
@@ -47,11 +49,13 @@
     "detailUrl": "./section.html?section=aurelle-category-gallery",
     "order": 2,
     "new": false,
-    "status": "In development",
+    "status": "Liquid built · Sale pending",
     "catalogVisible": true,
     "published": false,
     "previewKind": "design",
-    "collection": "AURELLE"
+    "collection": "AURELLE",
+    "offlineReviewed": true,
+    "shopifyTested": false
   },
   {
     "id": "aurelle-new-arrivals",
@@ -73,11 +77,13 @@
     "detailUrl": "./section.html?section=aurelle-new-arrivals",
     "order": 3,
     "new": false,
-    "status": "In development",
+    "status": "Liquid built · Sale pending",
     "catalogVisible": true,
     "published": false,
     "previewKind": "design",
-    "collection": "AURELLE"
+    "collection": "AURELLE",
+    "offlineReviewed": true,
+    "shopifyTested": false
   },
   {
     "id": "aurelle-bestsellers",
@@ -99,11 +105,13 @@
     "detailUrl": "./section.html?section=aurelle-bestsellers",
     "order": 4,
     "new": false,
-    "status": "In development",
+    "status": "Liquid built · Sale pending",
     "catalogVisible": true,
     "published": false,
     "previewKind": "design",
-    "collection": "AURELLE"
+    "collection": "AURELLE",
+    "offlineReviewed": true,
+    "shopifyTested": false
   },
   {
     "id": "aurelle-promotion",
@@ -125,11 +133,13 @@
     "detailUrl": "./section.html?section=aurelle-promotion",
     "order": 5,
     "new": false,
-    "status": "In development",
+    "status": "Liquid built · Sale pending",
     "catalogVisible": true,
     "published": false,
     "previewKind": "design",
-    "collection": "AURELLE"
+    "collection": "AURELLE",
+    "offlineReviewed": true,
+    "shopifyTested": false
   },
   {
     "id": "aurelle-testimonials",
@@ -151,11 +161,13 @@
     "detailUrl": "./section.html?section=aurelle-testimonials",
     "order": 6,
     "new": false,
-    "status": "In development",
+    "status": "Liquid built · Sale pending",
     "catalogVisible": true,
     "published": false,
     "previewKind": "design",
-    "collection": "AURELLE"
+    "collection": "AURELLE",
+    "offlineReviewed": true,
+    "shopifyTested": false
   },
   {
     "id": "aurelle-editorial-journal",
@@ -177,11 +189,13 @@
     "detailUrl": "./section.html?section=aurelle-editorial-journal",
     "order": 7,
     "new": false,
-    "status": "In development",
+    "status": "Liquid built · Sale pending",
     "catalogVisible": true,
     "published": false,
     "previewKind": "design",
-    "collection": "AURELLE"
+    "collection": "AURELLE",
+    "offlineReviewed": true,
+    "shopifyTested": false
   },
   {
     "id": "aurelle-instagram",
@@ -203,11 +217,13 @@
     "detailUrl": "./section.html?section=aurelle-instagram",
     "order": 8,
     "new": false,
-    "status": "In development",
+    "status": "Liquid built · Sale pending",
     "catalogVisible": true,
     "published": false,
     "previewKind": "design",
-    "collection": "AURELLE"
+    "collection": "AURELLE",
+    "offlineReviewed": true,
+    "shopifyTested": false
   },
   {
     "id": "aurelle-newsletter",
@@ -229,11 +245,13 @@
     "detailUrl": "./section.html?section=aurelle-newsletter",
     "order": 9,
     "new": false,
-    "status": "In development",
+    "status": "Liquid built · Sale pending",
     "catalogVisible": true,
     "published": false,
     "previewKind": "design",
-    "collection": "AURELLE"
+    "collection": "AURELLE",
+    "offlineReviewed": true,
+    "shopifyTested": false
   },
   {
     "id": "aurelle-footer",
@@ -255,10 +273,12 @@
     "detailUrl": "./section.html?section=aurelle-footer",
     "order": 10,
     "new": false,
-    "status": "In development",
+    "status": "Liquid built · Sale pending",
     "catalogVisible": true,
     "published": false,
     "previewKind": "design",
-    "collection": "AURELLE"
+    "collection": "AURELLE",
+    "offlineReviewed": true,
+    "shopifyTested": false
   }
 ]

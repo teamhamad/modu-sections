@@ -45,3 +45,7 @@ When a section passes Shopify testing, replace its design screenshot with an act
 ## Full-screen preview
 
 All AURELLE sections now link to `preview.html?section=SECTION_ID`, a viewport-filling viewer with fit and 100% zoom, a browser fullscreen toggle, and desktop/mobile status. The brand is the simple typography-only `modu.` wordmark. Design references are not live tested Shopify demos.
+
+## Offline development milestone — version 1.1
+
+The owner requested that development proceed from AURELLE Figma designs without using their connected Shopify store. Ten private standalone Liquid sections have been polished and structurally checked offline. See [AURELLE_INVENTORY.md](AURELLE_INVENTORY.md). Paid source remains outside public GitHub and the catalog remains explicitly pre-release until a store-render test and secure payment/delivery setup are completed.
