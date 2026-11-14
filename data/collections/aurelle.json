@@ -19,7 +19,15 @@
       "currency": "USD",
       "price": null,
       "checkoutUrl": null,
-      "previewImage": null
+      "previewImage": "./assets/aurelle/aurelle-hero.png",
+      "previewKind": "design",
+      "catalogVisible": true,
+      "style": "Editorial",
+      "tags": [
+        "Hero",
+        "Campaign",
+        "Skincare"
+      ]
     },
     {
       "id": "aurelle-category-gallery",
@@ -36,7 +44,15 @@
       "currency": "USD",
       "price": null,
       "checkoutUrl": null,
-      "previewImage": null
+      "previewImage": "./assets/aurelle/aurelle-category-gallery.png",
+      "previewKind": "design",
+      "catalogVisible": true,
+      "style": "Editorial",
+      "tags": [
+        "Categories",
+        "Skincare",
+        "Collections"
+      ]
     },
     {
       "id": "aurelle-new-arrivals",
@@ -53,7 +69,14 @@
       "currency": "USD",
       "price": null,
       "checkoutUrl": null,
-      "previewImage": null
+      "previewImage": "./assets/aurelle/aurelle-new-arrivals.png",
+      "previewKind": "design",
+      "catalogVisible": true,
+      "style": "Minimal",
+      "tags": [
+        "Product grid",
+        "New arrivals"
+      ]
     },
     {
       "id": "aurelle-bestsellers",
@@ -70,7 +93,14 @@
       "currency": "USD",
       "price": null,
       "checkoutUrl": null,
-      "previewImage": null
+      "previewImage": "./assets/aurelle/aurelle-bestsellers.png",
+      "previewKind": "design",
+      "catalogVisible": true,
+      "style": "Editorial",
+      "tags": [
+        "Bestsellers",
+        "Product grid"
+      ]
     },
     {
       "id": "aurelle-promotion",
@@ -87,7 +117,14 @@
       "currency": "USD",
       "price": null,
       "checkoutUrl": null,
-      "previewImage": null
+      "previewImage": "./assets/aurelle/aurelle-promotion.png",
+      "previewKind": "design",
+      "catalogVisible": true,
+      "style": "Bold",
+      "tags": [
+        "Campaign",
+        "Promotions"
+      ]
     },
     {
       "id": "aurelle-testimonials",
@@ -104,7 +141,14 @@
       "currency": "USD",
       "price": null,
       "checkoutUrl": null,
-      "previewImage": null
+      "previewImage": "./assets/aurelle/aurelle-testimonials.png",
+      "previewKind": "design",
+      "catalogVisible": true,
+      "style": "Minimal",
+      "tags": [
+        "Reviews",
+        "Testimonials"
+      ]
     },
     {
       "id": "aurelle-editorial-journal",
@@ -121,7 +165,14 @@
       "currency": "USD",
       "price": null,
       "checkoutUrl": null,
-      "previewImage": null
+      "previewImage": "./assets/aurelle/aurelle-editorial-journal.png",
+      "previewKind": "design",
+      "catalogVisible": true,
+      "style": "Editorial",
+      "tags": [
+        "Blog",
+        "Editorial"
+      ]
     },
     {
       "id": "aurelle-instagram",
@@ -138,7 +189,14 @@
       "currency": "USD",
       "price": null,
       "checkoutUrl": null,
-      "previewImage": null
+      "previewImage": "./assets/aurelle/aurelle-instagram.png",
+      "previewKind": "design",
+      "catalogVisible": true,
+      "style": "Editorial",
+      "tags": [
+        "Social gallery",
+        "Instagram"
+      ]
     },
     {
       "id": "aurelle-newsletter",
@@ -155,7 +213,14 @@
       "currency": "USD",
       "price": null,
       "checkoutUrl": null,
-      "previewImage": null
+      "previewImage": "./assets/aurelle/aurelle-newsletter.png",
+      "previewKind": "design",
+      "catalogVisible": true,
+      "style": "Minimal",
+      "tags": [
+        "Newsletter",
+        "Email"
+      ]
     },
     {
       "id": "aurelle-footer",
@@ -172,7 +237,14 @@
       "currency": "USD",
       "price": null,
       "checkoutUrl": null,
-      "previewImage": null
+      "previewImage": "./assets/aurelle/aurelle-footer.png",
+      "previewKind": "design",
+      "catalogVisible": true,
+      "style": "Editorial",
+      "tags": [
+        "Footer",
+        "Branding"
+      ]
     }
   ]
 }

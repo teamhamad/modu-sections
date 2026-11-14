@@ -1,5 +1,5 @@
 /* modu. Shopify sections marketplace.
-   Only explicitly published REAL products in data/sections.json are displayed.
+   Only real existing builds with catalogVisible=true are shown. Unverified items are previews only; secure checkout is never simulated.
    Paid Liquid source must NEVER be placed in this public static repository. */
 "use strict";
 
@@ -34,7 +34,7 @@ const safeId = value => /^[a-z0-9][a-z0-9-]*$/i.test(String(value || ""));
 let lastFocused = null;
 
 function validItem(item) {
-  return item && item.published === true && safeId(item.id) &&
+  return item && (item.catalogVisible === true || item.published === true) && safeId(item.id) &&
     typeof item.name === "string" && item.name.trim() &&
     TYPES.includes(item.type) && Array.isArray(item.industry) &&
     item.industry.length > 0 && item.industry.every(v => INDUSTRIES.some(([name]) => name === v)) &&
@@ -72,18 +72,22 @@ function screenshot(item, device) {
     : item.previewDesktop || item.thumbnail);
 }
 function cardMarkup(item) {
-  const saved = state.saved.has(item.id);
-  const tags = Array.isArray(item.tags) ? item.tags : [];
-  return '<article class="product-card">' +
-    '<div class="card-media"><button class="card-preview-open" type="button" data-preview="' + escapeHtml(item.id) + '" aria-label="Preview ' + escapeHtml(item.name) + '">' +
-    '<img class="real-preview-image" src="' + assetUrl(item.thumbnail) + '" alt="" loading="lazy" />' +
-    '<span class="card-hover-preview">' + icon("monitor") + ' View preview</span></button>' +
-    (item.new ? '<span class="card-floating-tag">✳ Just added</span>' : "") +
-    '<button class="card-save' + (saved ? ' saved' : '') + '" type="button" data-save="' + escapeHtml(item.id) + '" aria-label="' + (saved ? "Remove saved " : "Save ") + escapeHtml(item.name) + '" aria-pressed="' + saved + '">' + icon("heart") + '</button></div>' +
-    '<div class="card-info"><div class="card-caption"><span>' + escapeHtml(item.type) + '</span>' + (item.new ? '<span class="card-new">NEW</span>' : '') + '</div>' +
-    '<div class="card-title-row"><button data-preview="' + escapeHtml(item.id) + '" type="button">' + escapeHtml(item.name) + '</button></div>' +
-    '<p class="card-description">' + escapeHtml(item.desc || "") + '</p>' +
-    '<div class="card-tags">' + tags.map(tag => '<span>' + escapeHtml(tag) + '</span>').join("") + '</div></div></article>';
+  const saved=state.saved.has(item.id);
+  const tags=Array.isArray(item.tags)?item.tags:[];
+  const ready=item.published===true && item.shopifyTested===true;
+  const badge=ready?"Available":"In development";
+  return '<article class="product-card shop-card">' +
+    '<div class="card-media"><button class="card-preview-open" type="button" data-preview="'+escapeHtml(item.id)+'" aria-label="Preview '+escapeHtml(item.name)+'">' +
+    '<img class="real-preview-image" src="'+assetUrl(item.thumbnail)+'" alt="Design preview of '+escapeHtml(item.name)+'" loading="lazy" decoding="async" />' +
+    '<span class="card-hover-preview">'+icon("monitor")+' View preview</span></button>' +
+    '<span class="shop-card-status'+(ready?" is-ready":"")+'">'+escapeHtml(badge)+'</span>' +
+    '<button class="card-save'+(saved?' saved':'')+'" type="button" data-save="'+escapeHtml(item.id)+'" aria-label="'+(saved?"Remove saved ":"Save ")+escapeHtml(item.name)+'" aria-pressed="'+saved+'">'+icon("heart")+'</button></div>' +
+    '<div class="card-info"><div class="card-caption"><span>'+escapeHtml(item.type)+'</span><span class="shop-brand">'+escapeHtml(item.collection||"AURELLE")+'</span></div>' +
+    '<div class="card-title-row"><button data-preview="'+escapeHtml(item.id)+'" type="button">'+escapeHtml(item.name)+'</button></div>' +
+    '<p class="card-description">'+escapeHtml(item.desc||"")+'</p>' +
+    '<div class="card-tags">'+tags.map(tag=>'<span>'+escapeHtml(tag)+'</span>').join("")+'</div>' +
+    '<div class="shop-card-footer"><a href="'+escapeHtml(item.detailUrl)+'" aria-label="View details for '+escapeHtml(item.name)+'">View section details '+icon("northeast")+'</a><span>'+ (ready?"Ready to buy":"Design preview")+'</span></div>' +
+    '</div></article>';
 }
 function options(label, dimension, values) {
   const selected = state[dimension];
@@ -139,7 +143,7 @@ function renderCatalog() {
   $("#product-grid").innerHTML = items.map(cardMarkup).join("");
   $("#result-count").textContent = items.length;
   $("#result-label").textContent = state.savedOnly ? "saved section" + (items.length===1?"":"s") :
-    "published section" + (items.length===1?"":"s");
+    "section" + (items.length===1?"":"s") + " in the library";
   $("#catalog-end").hidden = !items.length;
   $("#saved-count").textContent = state.saved.size;
   $("#saved-nav").setAttribute("aria-pressed", String(state.savedOnly));
@@ -173,24 +177,30 @@ function toggleSaved(id) {
   showToast(state.saved.has(id)?"Saved to your shortlist":"Removed from your shortlist");
 }
 function renderModalDetails(item) {
-  const tags = [item.type,...item.industry];
-  $("#modal-details").innerHTML =
-    '<div class="modal-tags">' + tags.map(tag=>'<span>'+escapeHtml(tag)+'</span>').join("")+'</div>' +
-    '<h2 id="modal-name">'+escapeHtml(item.name)+'</h2><p>'+escapeHtml(item.desc||"")+'</p>' +
-    '<div class="detail-divider"></div>' +
-    '<div class="detail-list"><span>'+icon("check-circle")+' Shopify Liquid section</span><span>'+icon("check-circle")+' Real design preview</span></div>' +
-    (assetUrl(item.demoUrl) ? '<a class="modal-action modal-link" target="_blank" rel="noopener noreferrer" href="'+assetUrl(item.demoUrl)+'">Open live demo '+icon("northeast")+'</a>' : '') +
-    '<button class="modal-action secondary" type="button" data-modal-save="'+escapeHtml(item.id)+'">'+icon("heart")+
-      (state.saved.has(item.id)?" Remove from saved":" Save section")+'</button>' +
-    '<p class="modal-notice">Each release is reviewed individually. Installation details and purchasing options will be published alongside the finished section.</p>';
+ const tags=[item.type,...item.industry];
+ const ready=item.published===true&&item.shopifyTested===true;
+ $("#modal-details").innerHTML=
+   '<div class="modal-tags">'+tags.map(tag=>'<span>'+escapeHtml(tag)+'</span>').join("")+'</div>'+
+   '<h2 id="modal-name">'+escapeHtml(item.name)+'</h2><p>'+escapeHtml(item.desc||"")+'</p>'+
+   '<div class="detail-divider"></div>'+
+   '<div class="detail-list"><span>'+icon("check-circle")+' Standalone Shopify Liquid build</span><span>'+icon("check-circle")+' Theme editor settings included</span></div>'+
+   '<a class="modal-action modal-link" href="'+escapeHtml(item.detailUrl)+'">View section details '+icon("northeast")+'</a>'+
+   '<button class="modal-action secondary" type="button" data-modal-save="'+escapeHtml(item.id)+'">'+icon("heart")+
+   (state.saved.has(item.id)?" Remove from saved":" Save section")+'</button>'+
+   '<p class="modal-notice">'+(ready?"View details to purchase and download securely.":"Design preview only. Shopify theme testing and secure checkout are not yet complete; this section is not for sale yet.")+'</p>';
 }
 function renderModalScene(item) {
-  const image=screenshot(item,state.device);
   const scene=$("#modal-scene-container");
-  scene.innerHTML='<div class="scene real-scene"><img src="'+image+'" alt="'+escapeHtml(item.name)+' — '+state.device+' preview"/></div>';
-  scene.classList.toggle("mobile-preview",state.device==="mobile");
-  $("#device-desktop").classList.toggle("active",state.device==="desktop");
-  $("#device-mobile").classList.toggle("active",state.device==="mobile");
+  const mobile=state.device==="mobile";
+  if (mobile && !item.previewMobile) {
+    scene.innerHTML='<div class="scene modal-mobile-pending"><strong>Mobile preview coming after testing</strong><p>The design has not been verified in a live Shopify mobile theme yet.</p></div>';
+  } else {
+    const image=screenshot(item,state.device);
+    scene.innerHTML='<div class="scene real-scene"><img src="'+image+'" alt="'+escapeHtml(item.name)+' — '+(mobile?'mobile':'desktop')+' design preview"/><span class="scene-preview-label">Design preview · Shopify test pending</span></div>';
+  }
+  scene.classList.toggle("mobile-preview",mobile);
+  $("#device-desktop").classList.toggle("active",!mobile);
+  $("#device-mobile").classList.toggle("active",mobile);
 }
 function openModal(id) {
   const item=CATALOG.find(product=>product.id===id);if(!item)return;

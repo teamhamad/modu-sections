@@ -1,1 +1,264 @@
-[]
+[
+  {
+    "id": "aurelle-hero",
+    "name": "AURELLE — Editorial Hero",
+    "type": "Hero & banners",
+    "industry": [
+      "Skincare & beauty"
+    ],
+    "style": "Editorial",
+    "desc": "Large skincare campaign headline with editorial image and shopping call to action",
+    "tags": [
+      "Hero",
+      "Campaign",
+      "Skincare"
+    ],
+    "keywords": "aurelle hero AURELLE — Editorial Hero shopify liquid skincare beauty Hero & banners Hero Campaign Skincare",
+    "thumbnail": "./assets/aurelle/aurelle-hero.png",
+    "previewDesktop": "./assets/aurelle/aurelle-hero.png",
+    "previewMobile": null,
+    "detailUrl": "./section.html?section=aurelle-hero",
+    "order": 1,
+    "new": false,
+    "status": "In development",
+    "catalogVisible": true,
+    "published": false,
+    "previewKind": "design",
+    "collection": "AURELLE"
+  },
+  {
+    "id": "aurelle-category-gallery",
+    "name": "AURELLE — Category Gallery",
+    "type": "Collections",
+    "industry": [
+      "Skincare & beauty"
+    ],
+    "style": "Editorial",
+    "desc": "Visual category discovery cards for skincare routines and product families",
+    "tags": [
+      "Categories",
+      "Skincare",
+      "Collections"
+    ],
+    "keywords": "aurelle category gallery AURELLE — Category Gallery shopify liquid skincare beauty Collections Categories Skincare Collections",
+    "thumbnail": "./assets/aurelle/aurelle-category-gallery.png",
+    "previewDesktop": "./assets/aurelle/aurelle-category-gallery.png",
+    "previewMobile": null,
+    "detailUrl": "./section.html?section=aurelle-category-gallery",
+    "order": 2,
+    "new": false,
+    "status": "In development",
+    "catalogVisible": true,
+    "published": false,
+    "previewKind": "design",
+    "collection": "AURELLE"
+  },
+  {
+    "id": "aurelle-new-arrivals",
+    "name": "AURELLE — New Arrivals Grid",
+    "type": "Product sections",
+    "industry": [
+      "Skincare & beauty"
+    ],
+    "style": "Minimal",
+    "desc": "Multi-row product discovery grid with product cards and section heading",
+    "tags": [
+      "Product grid",
+      "New arrivals"
+    ],
+    "keywords": "aurelle new arrivals AURELLE — New Arrivals Grid shopify liquid skincare beauty Product sections Product grid New arrivals",
+    "thumbnail": "./assets/aurelle/aurelle-new-arrivals.png",
+    "previewDesktop": "./assets/aurelle/aurelle-new-arrivals.png",
+    "previewMobile": null,
+    "detailUrl": "./section.html?section=aurelle-new-arrivals",
+    "order": 3,
+    "new": false,
+    "status": "In development",
+    "catalogVisible": true,
+    "published": false,
+    "previewKind": "design",
+    "collection": "AURELLE"
+  },
+  {
+    "id": "aurelle-bestsellers",
+    "name": "AURELLE — Bestseller Showcase",
+    "type": "Product sections",
+    "industry": [
+      "Skincare & beauty"
+    ],
+    "style": "Editorial",
+    "desc": "Featured editorial image paired with bestselling product cards",
+    "tags": [
+      "Bestsellers",
+      "Product grid"
+    ],
+    "keywords": "aurelle bestsellers AURELLE — Bestseller Showcase shopify liquid skincare beauty Product sections Bestsellers Product grid",
+    "thumbnail": "./assets/aurelle/aurelle-bestsellers.png",
+    "previewDesktop": "./assets/aurelle/aurelle-bestsellers.png",
+    "previewMobile": null,
+    "detailUrl": "./section.html?section=aurelle-bestsellers",
+    "order": 4,
+    "new": false,
+    "status": "In development",
+    "catalogVisible": true,
+    "published": false,
+    "previewKind": "design",
+    "collection": "AURELLE"
+  },
+  {
+    "id": "aurelle-promotion",
+    "name": "AURELLE — Promotional Banners",
+    "type": "Hero & banners",
+    "industry": [
+      "Skincare & beauty"
+    ],
+    "style": "Bold",
+    "desc": "Side-by-side campaign and promotional offers",
+    "tags": [
+      "Campaign",
+      "Promotions"
+    ],
+    "keywords": "aurelle promotion AURELLE — Promotional Banners shopify liquid skincare beauty Hero & banners Campaign Promotions",
+    "thumbnail": "./assets/aurelle/aurelle-promotion.png",
+    "previewDesktop": "./assets/aurelle/aurelle-promotion.png",
+    "previewMobile": null,
+    "detailUrl": "./section.html?section=aurelle-promotion",
+    "order": 5,
+    "new": false,
+    "status": "In development",
+    "catalogVisible": true,
+    "published": false,
+    "previewKind": "design",
+    "collection": "AURELLE"
+  },
+  {
+    "id": "aurelle-testimonials",
+    "name": "AURELLE — Customer Testimonials",
+    "type": "Social proof",
+    "industry": [
+      "Skincare & beauty"
+    ],
+    "style": "Minimal",
+    "desc": "Customer review cards with rating display and carousel navigation",
+    "tags": [
+      "Reviews",
+      "Testimonials"
+    ],
+    "keywords": "aurelle testimonials AURELLE — Customer Testimonials shopify liquid skincare beauty Social proof Reviews Testimonials",
+    "thumbnail": "./assets/aurelle/aurelle-testimonials.png",
+    "previewDesktop": "./assets/aurelle/aurelle-testimonials.png",
+    "previewMobile": null,
+    "detailUrl": "./section.html?section=aurelle-testimonials",
+    "order": 6,
+    "new": false,
+    "status": "In development",
+    "catalogVisible": true,
+    "published": false,
+    "previewKind": "design",
+    "collection": "AURELLE"
+  },
+  {
+    "id": "aurelle-editorial-journal",
+    "name": "AURELLE — Editorial Blog",
+    "type": "Content & story",
+    "industry": [
+      "Skincare & beauty"
+    ],
+    "style": "Editorial",
+    "desc": "Large featured article with supporting editorial stories",
+    "tags": [
+      "Blog",
+      "Editorial"
+    ],
+    "keywords": "aurelle editorial journal AURELLE — Editorial Blog shopify liquid skincare beauty Content & story Blog Editorial",
+    "thumbnail": "./assets/aurelle/aurelle-editorial-journal.png",
+    "previewDesktop": "./assets/aurelle/aurelle-editorial-journal.png",
+    "previewMobile": null,
+    "detailUrl": "./section.html?section=aurelle-editorial-journal",
+    "order": 7,
+    "new": false,
+    "status": "In development",
+    "catalogVisible": true,
+    "published": false,
+    "previewKind": "design",
+    "collection": "AURELLE"
+  },
+  {
+    "id": "aurelle-instagram",
+    "name": "AURELLE — Social Gallery",
+    "type": "Content & story",
+    "industry": [
+      "Skincare & beauty"
+    ],
+    "style": "Editorial",
+    "desc": "Four-tile social photography gallery with Instagram call to action",
+    "tags": [
+      "Social gallery",
+      "Instagram"
+    ],
+    "keywords": "aurelle instagram AURELLE — Social Gallery shopify liquid skincare beauty Content & story Social gallery Instagram",
+    "thumbnail": "./assets/aurelle/aurelle-instagram.png",
+    "previewDesktop": "./assets/aurelle/aurelle-instagram.png",
+    "previewMobile": null,
+    "detailUrl": "./section.html?section=aurelle-instagram",
+    "order": 8,
+    "new": false,
+    "status": "In development",
+    "catalogVisible": true,
+    "published": false,
+    "previewKind": "design",
+    "collection": "AURELLE"
+  },
+  {
+    "id": "aurelle-newsletter",
+    "name": "AURELLE — Newsletter Promotion",
+    "type": "Interactive",
+    "industry": [
+      "Skincare & beauty"
+    ],
+    "style": "Minimal",
+    "desc": "Editorial newsletter signup paired with campaign image",
+    "tags": [
+      "Newsletter",
+      "Email"
+    ],
+    "keywords": "aurelle newsletter AURELLE — Newsletter Promotion shopify liquid skincare beauty Interactive Newsletter Email",
+    "thumbnail": "./assets/aurelle/aurelle-newsletter.png",
+    "previewDesktop": "./assets/aurelle/aurelle-newsletter.png",
+    "previewMobile": null,
+    "detailUrl": "./section.html?section=aurelle-newsletter",
+    "order": 9,
+    "new": false,
+    "status": "In development",
+    "catalogVisible": true,
+    "published": false,
+    "previewKind": "design",
+    "collection": "AURELLE"
+  },
+  {
+    "id": "aurelle-footer",
+    "name": "AURELLE — Brand Footer",
+    "type": "Content & story",
+    "industry": [
+      "Skincare & beauty"
+    ],
+    "style": "Editorial",
+    "desc": "Brand signature, navigation columns, social links and social image grid",
+    "tags": [
+      "Footer",
+      "Branding"
+    ],
+    "keywords": "aurelle footer AURELLE — Brand Footer shopify liquid skincare beauty Content & story Footer Branding",
+    "thumbnail": "./assets/aurelle/aurelle-footer.png",
+    "previewDesktop": "./assets/aurelle/aurelle-footer.png",
+    "previewMobile": null,
+    "detailUrl": "./section.html?section=aurelle-footer",
+    "order": 10,
+    "new": false,
+    "status": "In development",
+    "catalogVisible": true,
+    "published": false,
+    "previewKind": "design",
+    "collection": "AURELLE"
+  }
+]

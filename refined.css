@@ -239,3 +239,19 @@ footer{background:#fbfbfa;border-top:1px solid #eef0ed}
 .aurelle-teaser-link{background:#302f2a;color:#fff!important;font-size:11px;font-weight:750;text-decoration:none;white-space:nowrap;border-radius:8px;padding:17px 18px}
 .aurelle-teaser-link:hover{background:#55514d}
 @media(max-width:760px){.aurelle-teaser-inner{padding:30px 24px;flex-direction:column;align-items:flex-start}.aurelle-teaser-link{white-space:normal;display:inline-flex}.aurelle-teaser-inner h2{font-size:27px}}
+
+/* Real AURELLE section cards and transparent pre-release badges */
+.shop-card .card-media{background:#f4f0e8;position:relative}
+.shop-card .real-preview-image{object-fit:cover;object-position:center top;transition:transform .35s ease}
+.shop-card .card-media:hover .real-preview-image{transform:scale(1.035)}
+.shop-card-status{position:absolute;top:13px;left:13px;border:1px solid #e9e1ce;background:#fffcf6;color:#8a754a;padding:7px 10px;border-radius:5px;font-size:10px;font-weight:800;letter-spacing:.02em;z-index:2;pointer-events:none}
+.shop-card-status.is-ready{background:#eaf8eb;color:#3f7551;border-color:#d7ebdb}
+.shop-card .shop-brand{font-weight:750;color:#8d8a9d;font-size:10px;letter-spacing:.04em}
+.shop-card-footer{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #edf0ed;padding-top:14px;margin-top:14px;gap:10px}
+.shop-card-footer a{font-size:11px;font-weight:800;color:#5048b5;text-decoration:none;display:inline-flex;gap:5px;align-items:center}
+.shop-card-footer a:hover{text-decoration:underline;text-underline-offset:3px}
+.shop-card-footer span{font-size:10px;color:#9a9e98}
+.scene-preview-label{position:absolute;bottom:12px;left:12px;padding:8px 10px;background:rgba(255,255,255,.95);border:1px solid #e4e8e3;border-radius:6px;font-size:10px;color:#686e68;font-weight:700}
+.modal-mobile-pending{display:flex;flex-direction:column;justify-content:center;align-items:center;padding:30px;min-height:310px;text-align:center;background:#f6f4ef;color:#343a35}
+.modal-mobile-pending strong{font-size:17px}.modal-mobile-pending p{font-size:12px;color:#7a817b;max-width:240px;line-height:1.7}
+@media(max-width:700px){.shop-card-footer{align-items:flex-start;flex-wrap:wrap}}
