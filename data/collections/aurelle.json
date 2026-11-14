@@ -1,0 +1,162 @@
+{
+  "slug": "aurelle",
+  "name": "AURELLE",
+  "source": "Figma",
+  "fileKey": "UQN0gc5SKqjYygkwmb8Ar3",
+  "fileName": "AURELLE v2 — Copy",
+  "status": "design_reference",
+  "industry": "Skincare & beauty",
+  "publishedProducts": 0,
+  "sections": [
+    {
+      "id": "aurelle-hero",
+      "name": "AURELLE — Editorial Hero",
+      "type": "Hero & banners",
+      "industry": [
+        "Skincare & beauty"
+      ],
+      "figmaNodeId": "2040:71",
+      "figmaUrl": "https://www.figma.com/design/UQN0gc5SKqjYygkwmb8Ar3/AURELLE?node-id=2040-71",
+      "description": "Large skincare campaign headline with editorial image and shopping call to action",
+      "order": 1,
+      "status": "in_development",
+      "liquidVerified": false,
+      "previewVerified": false
+    },
+    {
+      "id": "aurelle-category-gallery",
+      "name": "AURELLE — Category Gallery",
+      "type": "Collections",
+      "industry": [
+        "Skincare & beauty"
+      ],
+      "figmaNodeId": "2010:6112",
+      "figmaUrl": "https://www.figma.com/design/UQN0gc5SKqjYygkwmb8Ar3/AURELLE?node-id=2010-6112",
+      "description": "Visual category discovery cards for skincare routines and product families",
+      "order": 2,
+      "status": "in_development",
+      "liquidVerified": false,
+      "previewVerified": false
+    },
+    {
+      "id": "aurelle-new-arrivals",
+      "name": "AURELLE — New Arrivals Grid",
+      "type": "Product sections",
+      "industry": [
+        "Skincare & beauty"
+      ],
+      "figmaNodeId": "2010:5637",
+      "figmaUrl": "https://www.figma.com/design/UQN0gc5SKqjYygkwmb8Ar3/AURELLE?node-id=2010-5637",
+      "description": "Multi-row product discovery grid with product cards and section heading",
+      "order": 3,
+      "status": "in_development",
+      "liquidVerified": false,
+      "previewVerified": false
+    },
+    {
+      "id": "aurelle-bestsellers",
+      "name": "AURELLE — Bestseller Showcase",
+      "type": "Product sections",
+      "industry": [
+        "Skincare & beauty"
+      ],
+      "figmaNodeId": "2010:5832",
+      "figmaUrl": "https://www.figma.com/design/UQN0gc5SKqjYygkwmb8Ar3/AURELLE?node-id=2010-5832",
+      "description": "Featured editorial image paired with bestselling product cards",
+      "order": 4,
+      "status": "in_development",
+      "liquidVerified": false,
+      "previewVerified": false
+    },
+    {
+      "id": "aurelle-promotion",
+      "name": "AURELLE — Promotional Banners",
+      "type": "Hero & banners",
+      "industry": [
+        "Skincare & beauty"
+      ],
+      "figmaNodeId": "2010:5942",
+      "figmaUrl": "https://www.figma.com/design/UQN0gc5SKqjYygkwmb8Ar3/AURELLE?node-id=2010-5942",
+      "description": "Side-by-side campaign and promotional offers",
+      "order": 5,
+      "status": "in_development",
+      "liquidVerified": false,
+      "previewVerified": false
+    },
+    {
+      "id": "aurelle-testimonials",
+      "name": "AURELLE — Customer Testimonials",
+      "type": "Social proof",
+      "industry": [
+        "Skincare & beauty"
+      ],
+      "figmaNodeId": "2028:538",
+      "figmaUrl": "https://www.figma.com/design/UQN0gc5SKqjYygkwmb8Ar3/AURELLE?node-id=2028-538",
+      "description": "Customer review cards with rating display and carousel navigation",
+      "order": 6,
+      "status": "in_development",
+      "liquidVerified": false,
+      "previewVerified": false
+    },
+    {
+      "id": "aurelle-editorial-journal",
+      "name": "AURELLE — Editorial Blog",
+      "type": "Content & story",
+      "industry": [
+        "Skincare & beauty"
+      ],
+      "figmaNodeId": "2010:6023",
+      "figmaUrl": "https://www.figma.com/design/UQN0gc5SKqjYygkwmb8Ar3/AURELLE?node-id=2010-6023",
+      "description": "Large featured article with supporting editorial stories",
+      "order": 7,
+      "status": "in_development",
+      "liquidVerified": false,
+      "previewVerified": false
+    },
+    {
+      "id": "aurelle-instagram",
+      "name": "AURELLE — Social Gallery",
+      "type": "Content & story",
+      "industry": [
+        "Skincare & beauty"
+      ],
+      "figmaNodeId": "2028:595",
+      "figmaUrl": "https://www.figma.com/design/UQN0gc5SKqjYygkwmb8Ar3/AURELLE?node-id=2028-595",
+      "description": "Four-tile social photography gallery with Instagram call to action",
+      "order": 8,
+      "status": "in_development",
+      "liquidVerified": false,
+      "previewVerified": false
+    },
+    {
+      "id": "aurelle-newsletter",
+      "name": "AURELLE — Newsletter Promotion",
+      "type": "Interactive",
+      "industry": [
+        "Skincare & beauty"
+      ],
+      "figmaNodeId": "2010:6043",
+      "figmaUrl": "https://www.figma.com/design/UQN0gc5SKqjYygkwmb8Ar3/AURELLE?node-id=2010-6043",
+      "description": "Editorial newsletter signup paired with campaign image",
+      "order": 9,
+      "status": "in_development",
+      "liquidVerified": false,
+      "previewVerified": false
+    },
+    {
+      "id": "aurelle-footer",
+      "name": "AURELLE — Brand Footer",
+      "type": "Content & story",
+      "industry": [
+        "Skincare & beauty"
+      ],
+      "figmaNodeId": "2010:6057",
+      "figmaUrl": "https://www.figma.com/design/UQN0gc5SKqjYygkwmb8Ar3/AURELLE?node-id=2010-6057",
+      "description": "Brand signature, navigation columns, social links and social image grid",
+      "order": 10,
+      "status": "in_development",
+      "liquidVerified": false,
+      "previewVerified": false
+    }
+  ]
+}
