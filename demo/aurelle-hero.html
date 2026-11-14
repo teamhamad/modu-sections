@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Interactive AURELLE editorial hero section demo."><title>AURELLE Editorial Hero — Live Browser Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./hero.css"></head>
+<body>
+<main class="aurelle-showcase">
+<section class="aurelle-hero" id="aurelle-hero" aria-labelledby="hero-title">
+  <div class="hero-image" role="img" aria-label="Woman with closed eyes applying skincare cream"></div>
+  <div class="hero-wash" aria-hidden="true"></div>
+  <div class="hero-inner"><div class="hero-copy">
+    <p class="hero-eyebrow" id="live-eyebrow">Skincare Rituals</p>
+    <h1 id="hero-title"><span id="live-heading-first">Everyday rituals.</span><span id="live-heading-second">Beautifully considered.</span></h1>
+    <div class="hero-line" aria-hidden="true"></div>
+    <p id="live-description">Considered skincare, made for your daily rituals.</p>
+    <a class="hero-button" id="live-button" href="#demo-details">Explore all <span aria-hidden="true">↗</span></a>
+  </div></div>
+  <div class="hero-counter" aria-hidden="true">01 <span>/</span> 01</div>
+</section>
+<section class="demo-details" id="demo-details">
+  <p class="details-overline">AURELLE · SECTION PREVIEW</p>
+  <h2>Beauty in the details.</h2>
+  <p>This is a responsive HTML/CSS demonstration of the editorial hero layout. The downloadable product is a separate Shopify Liquid section with theme editor settings.</p>
+</section>
+</main>
+<div class="demo-settings" id="demo-settings">
+ <button type="button" id="settings-trigger" class="settings-trigger" aria-expanded="false" aria-controls="settings-panel">✦ <span>Customize preview</span> <span aria-hidden="true">⌄</span></button>
+ <div id="settings-panel" class="settings-panel" hidden>
+   <div class="settings-title"><strong>Preview settings</strong><span>Changes are local to this demo</span></div>
+   <label for="setting-eyebrow">Eyebrow</label><input id="setting-eyebrow" type="text" value="Skincare Rituals" maxlength="64">
+   <label for="setting-heading">Main heading</label><textarea id="setting-heading" rows="2" maxlength="120">Everyday rituals.
+Beautifully considered.</textarea>
+   <div class="setting-row"><label for="setting-align">Alignment</label><select id="setting-align"><option value="left">Left</option><option value="center">Center</option><option value="right">Right</option></select></div>
+   <div class="setting-row"><label for="setting-overlay">Image contrast</label><input id="setting-overlay" type="range" min="0" max="85" value="45"><output id="setting-overlay-output" for="setting-overlay">45%</output></div>
+   <div class="setting-row"><label for="setting-height">Hero height</label><input id="setting-height" type="range" min="440" max="860" step="20" value="680"><output id="setting-height-output" for="setting-height">680px</output></div>
+   <button type="button" class="reset" id="reset-demo">Reset design</button>
+ </div>
+</div>
+<script defer src="./hero.js"></script></body></html>
