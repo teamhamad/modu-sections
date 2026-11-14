@@ -20,7 +20,7 @@
       "price": null,
       "checkoutUrl": null,
       "previewImage": "./assets/aurelle/aurelle-hero.png",
-      "previewKind": "design",
+      "previewKind": "browser_demo",
       "catalogVisible": true,
       "style": "Editorial",
       "tags": [
@@ -29,7 +29,9 @@
         "Skincare"
       ],
       "offlineReviewed": true,
-      "releasePackageVersion": "1.1"
+      "releasePackageVersion": "1.1",
+      "liveDemoUrl": "./demo/aurelle-hero.html",
+      "browserDemoBuilt": true
     },
     {
       "id": "aurelle-category-gallery",

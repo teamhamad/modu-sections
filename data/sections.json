@@ -23,10 +23,12 @@
     "status": "Liquid built · Sale pending",
     "catalogVisible": true,
     "published": false,
-    "previewKind": "design",
+    "previewKind": "browser_demo",
     "collection": "AURELLE",
     "offlineReviewed": true,
-    "shopifyTested": false
+    "shopifyTested": false,
+    "liveDemoUrl": "./demo/aurelle-hero.html",
+    "browserDemoBuilt": true
   },
   {
     "id": "aurelle-category-gallery",

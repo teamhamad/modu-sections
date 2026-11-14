@@ -49,3 +49,7 @@ All AURELLE sections now link to `preview.html?section=SECTION_ID`, a viewport-f
 ## Offline development milestone — version 1.1
 
 The owner requested that development proceed from AURELLE Figma designs without using their connected Shopify store. Ten private standalone Liquid sections have been polished and structurally checked offline. See [AURELLE_INVENTORY.md](AURELLE_INVENTORY.md). Paid source remains outside public GitHub and the catalog remains explicitly pre-release until a store-render test and secure payment/delivery setup are completed.
+
+## Interactive browser demo — AURELLE Hero
+
+The Hero's `preview.html?section=aurelle-hero` now loads a real responsive HTML/CSS demo from `demo/aurelle-hero.html`. Desktop/mobile controls change the iframe viewport, and the demo lets visitors edit the headline, alignment, overlay and hero height. The image credit is Yan Krukau (Pexels photo 7010890), referenced as a remote image; if the CDN is unavailable the section gracefully falls back to a beige background. This is a **browser-only demonstration**; the paid Shopify Liquid source is not exposed and the demo does not prove Shopify compatibility. The other nine cards remain design references.
