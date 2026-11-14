@@ -31,3 +31,7 @@ Public website: https://teamhamad.github.io/modu-sections/
 - Separate section-type and merchant-industry filters.
 - Show only real screenshots/previews from completed Liquid sections.
 - Never commit secret keys, paid downloadable Liquid bundles, or private Figma assets without permission.
+
+## AURELLE storefront & secure downloads
+
+AURELLE product detail pages live at section.html?section=PRODUCT_ID. Liquid ZIP packages are kept private. Once Shopify Digital Products is configured and live products are verified, set price/checkoutUrl/published/shopifyTested in data/collections/aurelle.json. See SELLING_SETUP.md. Editable Figma design source links are not public.

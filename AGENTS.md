@@ -14,3 +14,7 @@
 - Public entries belong in `data/sections.json` with `published: true` only after the real section exists and has been tested.
 - The hero MUST remain centered, text-only and without any imagery.
 - Keep paid downloadable Liquid source out of this public repository; use authenticated delivery infrastructure.
+
+## Paid product rules
+
+Do not expose editable Figma designs, private Liquid ZIPs or direct download URLs. A Buy & download CTA appears only for a section with published=true, shopifyTested=true, a real positive price and a checkoutUrl. Fulfillment must use Shopify Digital Products or another authenticated commerce provider.
