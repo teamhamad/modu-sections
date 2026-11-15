@@ -78,7 +78,7 @@
       "price": null,
       "checkoutUrl": null,
       "previewImage": "./assets/aurelle/aurelle-new-arrivals.png",
-      "previewKind": "design",
+      "previewKind": "browser_demo",
       "catalogVisible": true,
       "style": "Minimal",
       "tags": [
@@ -86,7 +86,10 @@
         "New arrivals"
       ],
       "offlineReviewed": true,
-      "releasePackageVersion": "1.1"
+      "releasePackageVersion": "1.1",
+      "liveDemoUrl": "./demo/aurelle-new-arrivals.html",
+      "browserDemoBuilt": true,
+      "demoAssetStatus": "Illustrative CSS product artwork; Figma original assets not available"
     },
     {
       "id": "aurelle-bestsellers",
