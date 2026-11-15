@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Responsive AURELLE new arrivals product grid — interactive browser demonstration">
+<title>AURELLE — New Arrivals Grid | Interactive Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./new-arrivals.css">
+</head>
+<body>
+<main>
+<section class="ritual-grid" id="ritual-grid" aria-labelledby="ritual-title">
+  <div class="ritual-container">
+    <header class="section-heading">
+      <div>
+        <h1 id="ritual-title">Discover our latest rituals</h1>
+        <p id="ritual-subtitle">Gentle, effective essentials for a calm, considered routine.</p>
+      </div>
+      <span class="collection-kicker">AURELLE / NEW ARRIVALS</span>
+    </header>
+    <div class="products" id="products" aria-live="polite" aria-label="Illustrative skincare products"></div>
+    <nav class="pagination" aria-label="Product pages" id="pagination"></nav>
+    <p class="demo-disclaimer">Illustrative demo products and prices. Not a live store or checkout.</p>
+  </div>
+</section>
+</main>
+<dialog class="quick-dialog" id="quick-dialog" aria-labelledby="quick-title">
+  <button id="quick-close" class="quick-close" type="button" aria-label="Close product preview">×</button>
+  <div class="quick-art" id="quick-art" aria-hidden="true"></div>
+  <div class="quick-info"><span class="quick-eyebrow">AURELLE / DEMO PRODUCT</span>
+  <h2 id="quick-title">Sample product</h2>
+  <p id="quick-description"></p>
+  <strong id="quick-price"></strong>
+  <p class="quick-note">This is a visual demo. Product data and purchasing are configured in Shopify once the section is installed.</p>
+  <button id="quick-done" class="quick-done" type="button">Back to products</button></div>
+</dialog>
+<div class="demo-customizer">
+<button id="customizer-trigger" class="customizer-trigger" type="button" aria-expanded="false" aria-controls="customizer-panel">✳ Customize section <span aria-hidden="true">⌄</span></button>
+<div class="customizer-panel" id="customizer-panel" hidden>
+  <div class="panel-heading"><strong>New Arrivals settings</strong><small>Interactive browser demo</small></div>
+  <label for="heading-input">Section heading</label><input id="heading-input" value="Discover our latest rituals" maxlength="85">
+  <label for="description-input">Supporting description</label><textarea id="description-input" rows="2" maxlength="180">Gentle, effective essentials for a calm, considered routine.</textarea>
+  <div class="setting-row"><label for="columns-input">Desktop columns</label><select id="columns-input"><option value="4">4 columns</option><option value="3">3 columns</option><option value="2">2 columns</option></select></div>
+  <div class="setting-row"><label for="gap-input">Card spacing</label><input id="gap-input" type="range" min="8" max="32" step="2" value="16"><output id="gap-value" for="gap-input">16px</output></div>
+  <div class="setting-row"><label for="badges-input">Show new badges</label><input id="badges-input" type="checkbox" checked></div>
+  <div class="setting-row"><label for="labels-input">Show category labels</label><input id="labels-input" type="checkbox" checked></div>
+  <div class="setting-row"><label for="rounded-input">Rounded cards</label><input id="rounded-input" type="checkbox"></div>
+  <button id="reset-inputs" class="reset-inputs" type="button">Restore original settings</button>
+</div>
+</div>
+<script defer src="./new-arrivals.js"></script>
+</body>
+</html>
