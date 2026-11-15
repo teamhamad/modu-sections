@@ -53,3 +53,7 @@ The owner requested that development proceed from AURELLE Figma designs without 
 ## Interactive browser demo — AURELLE Hero
 
 The Hero's `preview.html?section=aurelle-hero` now loads a real responsive HTML/CSS demo from `demo/aurelle-hero.html`. Desktop/mobile controls change the iframe viewport, and the demo lets visitors edit the headline, alignment, overlay and hero height. The image credit is Yan Krukau (Pexels photo 7010890), referenced as a remote image; if the CDN is unavailable the section gracefully falls back to a beige background. This is a **browser-only demonstration**; the paid Shopify Liquid source is not exposed and the demo does not prove Shopify compatibility. The other nine cards remain design references.
+
+## Interactive Category Gallery browser demo
+
+The section at `preview.html?section=aurelle-category-gallery` now embeds a real HTML/CSS/JavaScript implementation under `demo/aurelle-categories.html`. Controls allow merchants to edit heading, captions, card names, columns, card gap and rounded corners. Category clicks explain their intended collection-link behavior rather than navigating to nonexistent demo collections. Since Figma's account reached its tool limit, this draft uses CSS product artwork instead of original imagery; it is **not** asserted to be a pixel-perfect Figma rendition or a Shopify runtime test. Selling remains disabled pending verification and secure checkout.

@@ -49,7 +49,7 @@
       "price": null,
       "checkoutUrl": null,
       "previewImage": "./assets/aurelle/aurelle-category-gallery.png",
-      "previewKind": "design",
+      "previewKind": "browser_demo",
       "catalogVisible": true,
       "style": "Editorial",
       "tags": [
@@ -58,7 +58,9 @@
         "Collections"
       ],
       "offlineReviewed": true,
-      "releasePackageVersion": "1.1"
+      "releasePackageVersion": "1.1",
+      "liveDemoUrl": "./demo/aurelle-categories.html",
+      "browserDemoBuilt": true
     },
     {
       "id": "aurelle-new-arrivals",
