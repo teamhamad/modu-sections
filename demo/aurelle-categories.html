@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Interactive AURELLE skincare category gallery demo">
+<title>AURELLE Category Gallery — Interactive Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./categories.css"></head>
+<body>
+<main>
+<section class="gallery" id="gallery" aria-labelledby="gallery-heading">
+ <div class="gallery-container">
+  <header class="gallery-head"><div><span class="eyebrow">AURELLE • DISCOVER</span><h1 id="gallery-heading">Find the Perfect Step for Your Skin</h1></div><p class="gallery-subtitle" id="gallery-subtitle">Daily essentials, thoughtfully curated for your skincare ritual.</p></header>
+  <div class="category-grid" id="category-grid">
+   <a class="category-card category-cleanse" href="#collection-cleanse" aria-label="Explore Cleansers"><div class="visual" aria-hidden="true"><div class="ritual-surface"><span class="bottle bottle-amber"><i></i></span><span class="leaf leaf-a"></span><span class="leaf leaf-b"></span></div></div><span class="card-info"><span class="card-name">Cleansers</span><span class="card-arrow" aria-hidden="true">↗</span></span></a>
+   <a class="category-card category-serums" href="#collection-serums" aria-label="Explore Serums"><div class="visual" aria-hidden="true"><div class="ritual-surface"><span class="bottle bottle-dropper"><i></i></span><span class="shadow-ellipse"></span></div></div><span class="card-info"><span class="card-name">Serums</span><span class="card-arrow" aria-hidden="true">↗</span></span></a>
+   <a class="category-card category-moisture" href="#collection-moisture" aria-label="Explore Moisturizers"><div class="visual" aria-hidden="true"><div class="ritual-surface"><span class="jar"><i></i></span><span class="soft-ribbon"></span></div></div><span class="card-info"><span class="card-name">Moisturizers</span><span class="card-arrow" aria-hidden="true">↗</span></span></a>
+   <a class="category-card category-protection" href="#collection-protection" aria-label="Explore Sunscreen"><div class="visual" aria-hidden="true"><div class="ritual-surface"><span class="tube"><i></i></span><span class="sun-disk"></span></div></div><span class="card-info"><span class="card-name">Sunscreen</span><span class="card-arrow" aria-hidden="true">↗</span></span></a>
+  </div>
+  <div class="selection-message" id="selection-message" role="status" aria-live="polite" hidden></div>
+ </div>
+</section>
+<section class="demo-explanation"><div><span>SECTION 02 / CATEGORY GALLERY</span><h2>A ritual for every skin story.</h2><p>Explore how this standalone category section adapts to desktop and mobile layouts. The final Shopify Liquid version uses merchant-selected collection links and images.</p></div></section>
+</main>
+<div class="settings" id="settings">
+<button class="settings-toggle" id="settings-toggle" type="button" aria-controls="settings-panel" aria-expanded="false">✳ Customize section <span aria-hidden="true">⌄</span></button>
+<div class="settings-panel" id="settings-panel" hidden>
+ <div class="settings-head"><strong>Category gallery settings</strong><small>Local demo controls</small></div>
+ <label for="heading-input">Section heading</label><input type="text" id="heading-input" value="Find the Perfect Step for Your Skin" maxlength="90">
+ <label for="subtitle-input">Supporting text</label><textarea id="subtitle-input" rows="2" maxlength="170">Daily essentials, thoughtfully curated for your skincare ritual.</textarea>
+ <div class="input-row"><label for="columns-input">Desktop columns</label><select id="columns-input"><option value="4">4 columns</option><option value="3">3 columns</option><option value="2">2 columns</option></select></div>
+ <div class="input-row"><label for="spacing-input">Card spacing</label><input type="range" id="spacing-input" min="8" max="34" step="2" value="16"><output id="spacing-output" for="spacing-input">16px</output></div>
+ <div class="input-row"><label for="corners-input">Rounded corners</label><input type="checkbox" id="corners-input"></div>
+ <label>Category titles</label><div class="title-inputs"><input id="title-0" aria-label="Category 1 name" value="Cleansers"><input id="title-1" aria-label="Category 2 name" value="Serums"><input id="title-2" aria-label="Category 3 name" value="Moisturizers"><input id="title-3" aria-label="Category 4 name" value="Sunscreen"></div>
+ <button class="reset" type="button" id="reset">Restore original settings</button>
+</div></div>
+<script defer src="./categories.js"></script>
+</body></html>
